@@ -513,6 +513,10 @@ nav button.active { color:var(--lime); background:rgba(184,255,53,.1); }
   background:radial-gradient(circle,rgba(255,45,120,.08) 0%,transparent 70%);
   pointer-events:none;
 }
+@media (max-width:720px) {
+  .capstone-section { padding:20px 16px; }
+  .capstone-section [style*="grid-template-columns:1fr 1fr"] { grid-template-columns:1fr !important; }
+}
 .capstone-head {
   display:flex; align-items:flex-start; gap:20px; margin-bottom:24px;
 }
@@ -1172,13 +1176,13 @@ nav button.active { color:var(--lime); background:rgba(184,255,53,.1); }
         <div class="scrow"><span>Based on effort, creativity & execution</span><span class="scpts">Eamonn only</span></div>
       </div>
 
-      <!-- CAPSTONE -->
+      <!-- CAPSTONE OR CERT -->
       <div class="sc-card">
-        <h3>🏆 CAPSTONE PROJECT</h3>
-        <div class="scrow"><span>Team of 3–4, mandatory</span><span class="scpts">50 pts</span></div>
-        <div class="scrow"><span>Live presented Apr 29–May 1</span><span class="scpts">to Enablement Team</span></div>
-        <div class="scrow"><span>Graded by AI Panel + team feedback</span><span class="scpts">weighted</span></div>
-        <div class="scrow"><span>Originality · Teamwork · Usefulness · Quality</span><span class="scpts">criteria</span></div>
+        <h3>🏆 CAPSTONE <span style="color:var(--muted);font-size:13px">OR</span> 🎓 CERT</h3>
+        <div class="scrow"><span>Option A — Capstone: Team of 3–4</span><span class="scpts">50 pts</span></div>
+        <div class="scrow"><span>Option B — AI Cert: Individual path</span><span class="scpts">equivalent</span></div>
+        <div class="scrow"><span>Declare your path by April 10th</span><span class="scpts">required</span></div>
+        <div class="scrow"><span>Cert = no group competition points</span><span class="scpts">note</span></div>
       </div>
 
       <!-- RULES -->
@@ -1453,76 +1457,137 @@ function renderWeekView(){
     </div>`;
   });
 
-  // Capstone section — always shown at bottom
+  // Capstone / Cert section — always shown at bottom
   html+=`<div class="capstone-section">
-    <div class="capstone-head">
-      <div class="capstone-icon">🏆</div>
-      <div style="flex:1">
-        <div class="capstone-title">AI APRIL CAPSTONE PROJECT</div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
-          <span class="mandatory-badge">Mandatory</span>
-          <span class="capstone-pill">👥 Teams of 3–4</span>
-          <span class="capstone-pill">🏆 50 Points</span>
-          <span class="capstone-pill">📅 Present Apr 29–May 1</span>
-          <span class="capstone-pill">🎯 Final Due May 1st</span>
+    <!-- SECTION HEADER -->
+    <div style="text-align:center;margin-bottom:28px;">
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--muted);margin-bottom:8px">THE BIG COMMITMENT</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:2px;color:var(--text);line-height:1">CAPSTONE <span style="color:var(--muted);font-size:24px">OR</span> CERTIFICATION</div>
+      <div style="font-size:13px;color:var(--muted);margin-top:8px;">Choose your path. Commit to one. <strong style="color:var(--text)">Declare by April 10th.</strong></div>
+    </div>
+
+    <!-- SIDE-BY-SIDE -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
+
+      <!-- LEFT: CAPSTONE -->
+      <div style="background:linear-gradient(160deg,rgba(255,45,120,.08),rgba(255,45,120,.03));border:2px solid rgba(255,45,120,.3);border-radius:18px;padding:24px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--pink),rgba(255,45,120,.3))"></div>
+        <!-- Option badge -->
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:3px;background:rgba(255,45,120,.15);border:1px solid rgba(255,45,120,.35);color:var(--pink);padding:4px 12px;border-radius:100px;">OPTION A</span>
+          <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted)">TEAM · GRADED</span>
         </div>
-        <div class="capstone-sub">Team up with 3–4 colleagues to design and deliver a real AI-powered project that makes a genuine difference. This is your chance to go beyond individual challenges and build something your team would actually use. Graded by an AI Panel and team feedback — weighted on Idea Originality, Teamwork, Business Enablement Suitability, Usefulness, and Quality.</div>
+        <div style="font-size:28px;margin-bottom:8px">🏆</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1px;color:var(--pink);margin-bottom:4px">CAPSTONE PROJECT</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:18px">Build something real with your team. Design and deliver a complete AI-powered solution for a genuine business problem. Graded live by an AI Panel and team feedback.</div>
+
+        <!-- Points badge -->
+        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,45,120,.12);border:1px solid rgba(255,45,120,.3);border-radius:100px;padding:6px 16px;margin-bottom:18px;">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--pink)">50</span>
+          <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--muted)">POINTS · GRADED</span>
+        </div>
+
+        <!-- Steps -->
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px;">
+          ${[
+            {n:'01', title:'Ideation', desc:'Find a real workflow AI can improve. Form team of 3–4.', date:'Apr 1–7'},
+            {n:'02', title:'Pitch',    desc:'15 min with Eamonn. Approval required before building.', date:'Apr 8/9/10'},
+            {n:'03', title:'Build',    desc:'18 days to build your approved idea using AI tools.', date:'Apr 11–28'},
+            {n:'04', title:'Showcase', desc:'Present to the full team. 15–20 min per group.', date:'Apr 29 & 30'},
+          ].map(s=>`<div style="display:flex;gap:12px;align-items:flex-start;background:rgba(255,45,120,.06);border:1px solid rgba(255,45,120,.15);border-radius:10px;padding:10px 14px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--pink);flex-shrink:0;min-width:20px">${s.n}</div>
+            <div style="flex:1;">
+              <div style="font-size:12px;font-weight:800;color:var(--text);margin-bottom:2px">${s.title}</div>
+              <div style="font-size:11px;color:var(--muted);line-height:1.5">${s.desc}</div>
+            </div>
+            <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--pink);flex-shrink:0;white-space:nowrap">${s.date}</div>
+          </div>`).join('')}
+        </div>
+
+        <!-- Platform & Budget -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;">
+          <div style="background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:12px;">
+            <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:6px">PLATFORM</div>
+            <div style="font-size:11px;color:var(--text);line-height:1.6">Base44 · Lovable · Replit · Claude.ai<br><span style="color:var(--muted)">One shared team account</span></div>
+          </div>
+          <div style="background:var(--s1);border:1px solid rgba(184,255,53,.2);border-radius:10px;padding:12px;">
+            <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--lime);margin-bottom:6px">BUDGET</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--lime);line-height:1">$100</div>
+            <div style="font-size:10px;color:var(--muted)">per team · plan well</div>
+          </div>
+        </div>
+
+        <!-- Grading criteria -->
+        <div style="background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:12px;">
+          <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:8px">WEIGHTED GRADING CRITERIA</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;">
+            ${['💡 Originality','🤝 Teamwork','🏢 Business Value','⚙️ Usefulness','✨ Quality'].map(c=>`<span style="background:rgba(255,45,120,.08);border:1px solid rgba(255,45,120,.2);color:var(--text);font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px">${c}</span>`).join('')}
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: CERTIFICATION -->
+      <div style="background:linear-gradient(160deg,rgba(91,127,255,.08),rgba(91,127,255,.03));border:2px solid rgba(91,127,255,.3);border-radius:18px;padding:24px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gem),rgba(91,127,255,.3))"></div>
+        <!-- Option badge -->
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:3px;background:rgba(91,127,255,.15);border:1px solid rgba(91,127,255,.35);color:var(--gem);padding:4px 12px;border-radius:100px;">OPTION B</span>
+          <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted)">INDIVIDUAL · NO GROUP PTS</span>
+        </div>
+        <div style="font-size:28px;margin-bottom:8px">🎓</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1px;color:var(--gem);margin-bottom:4px">AI CERTIFICATION</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:18px">Earn a recognised AI certification. Equivalent to Capstone — your personal AI investment. Individual path with no group competition points.</div>
+
+        <!-- Equivalent badge -->
+        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(91,127,255,.12);border:1px solid rgba(91,127,255,.3);border-radius:100px;padding:6px 16px;margin-bottom:18px;">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--gem)">EQUIVALENT</span>
+          <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--muted)">TO CAPSTONE · INDIVIDUAL</span>
+        </div>
+
+        <!-- How it works -->
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px;">
+          ${[
+            {n:'01', title:'Declare',  desc:'Post your choice in #ai-april Teams channel by April 10th.'},
+            {n:'02', title:'Get Sign-off', desc:'If role-aligned, discuss with your manager and get approval first.'},
+            {n:'03', title:'Complete', desc:'Aim to finish by May 1st. Agree a timeline with manager if needed.'},
+            {n:'04', title:'Submit',   desc:'Post proof of completion in #ai-april Teams channel.'},
+          ].map(s=>`<div style="display:flex;gap:12px;align-items:flex-start;background:rgba(91,127,255,.06);border:1px solid rgba(91,127,255,.15);border-radius:10px;padding:10px 14px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--gem);flex-shrink:0;min-width:20px">${s.n}</div>
+            <div style="flex:1;">
+              <div style="font-size:12px;font-weight:800;color:var(--text);margin-bottom:2px">${s.title}</div>
+              <div style="font-size:11px;color:var(--muted);line-height:1.5">${s.desc}</div>
+            </div>
+          </div>`).join('')}
+        </div>
+
+        <!-- Providers & Platforms -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;">
+          <div style="background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:12px;">
+            <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:6px">RECOMMENDED PROVIDERS</div>
+            <div style="font-size:11px;color:var(--text);line-height:1.8">Microsoft · AWS<br>NVIDIA · IBM<br>Google</div>
+          </div>
+          <div style="background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:12px;">
+            <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:6px">RECOMMENDED PLATFORMS</div>
+            <div style="font-size:11px;color:var(--text);line-height:1.8">LinkedIn Learning<br>Coursera · Udemy<br>DeepLearning.AI</div>
+          </div>
+        </div>
+
+        <!-- Note -->
+        <div style="background:rgba(91,127,255,.07);border:1px solid rgba(91,127,255,.2);border-radius:10px;padding:12px;">
+          <div style="font-size:11px;color:var(--muted);line-height:1.65;">
+            <strong style="color:var(--gem)">Note:</strong> Certification counts as equivalent to Capstone, but does not earn group competition points. If a certification is more aligned to your role, this is your path.
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- KEY DATES -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:28px;">
-      <div style="background:var(--s1);border:1px solid rgba(255,45,120,.25);border-radius:12px;padding:16px;">
-        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--pink);margin-bottom:6px">STEP 1</div>
-        <div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:4px">Announce Your Team</div>
-        <div style="font-size:12px;color:var(--muted)">Post your team of 3–4 in the <strong style="color:var(--text)">#ai-april</strong> channel</div>
-        <div style="margin-top:8px;font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--pink)">By Friday Apr 3</div>
+    <!-- DECLARATION BANNER -->
+    <div style="background:rgba(255,255,255,.03);border:1px solid var(--border2);border-radius:14px;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:var(--text)">DECLARE YOUR PATH</div>
+        <div style="font-size:12px;color:var(--muted)">Post your choice (Capstone or Cert) in <strong style="color:var(--text)">#ai-april</strong> in Microsoft Teams</div>
       </div>
-      <div style="background:var(--s1);border:1px solid rgba(255,45,120,.25);border-radius:12px;padding:16px;">
-        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--pink);margin-bottom:6px">STEP 2</div>
-        <div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:4px">Present Your Idea</div>
-        <div style="font-size:12px;color:var(--muted)">Share your Capstone concept with the group for feedback</div>
-        <div style="margin-top:8px;font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--pink)">By Friday Apr 10</div>
-      </div>
-      <div style="background:var(--s1);border:1px solid rgba(255,45,120,.25);border-radius:12px;padding:16px;">
-        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--pink);margin-bottom:6px">STEP 3</div>
-        <div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:4px">Live Presentation</div>
-        <div style="font-size:12px;color:var(--muted)">Present live to the Enablement Team</div>
-        <div style="margin-top:8px;font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--pink)">Apr 29 – May 1</div>
-      </div>
-      <div style="background:var(--s1);border:1px solid rgba(255,45,120,.25);border-radius:12px;padding:16px;">
-        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--lime);margin-bottom:6px">FINAL DEADLINE</div>
-        <div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:4px">Full Submission</div>
-        <div style="font-size:12px;color:var(--muted)">All deliverables submitted and graded</div>
-        <div style="margin-top:8px;font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--lime)">May 1st 🏁</div>
-      </div>
-    </div>
-
-    <!-- GRADING -->
-    <div style="background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:24px;">
-      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:12px">GRADED BY AI PANEL + TEAM FEEDBACK · WEIGHTED SCORING</div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        ${['💡 Idea Originality','🤝 Teamwork','🏢 Business Enablement Suitability','⚙️ Usefulness','✨ Quality of Project'].map(c=>`<span style="background:var(--s2);border:1px solid var(--border);color:var(--text);font-size:12px;font-weight:600;padding:5px 12px;border-radius:100px">${c}</span>`).join('')}
-      </div>
-    </div>
-
-    <!-- INSPIRATION -->
-    <div>
-      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:14px">💡 INSPIRATION — WHAT COULD YOUR CAPSTONE BE?</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;">
-        ${[
-          {icon:'🔄', title:'AI-Driven Process Flow',    desc:'Map a real team process and rebuild it with AI automation. Show before/after — what used to take hours, now takes minutes.'},
-          {icon:'🛠️', title:'Enablement Extender',       desc:'Build a tool that extends what your team already does — a prompt library, AI-assisted playbook, or smart onboarding guide.'},
-          {icon:'♻️', title:'Content Repurposing Engine', desc:'Take existing content — decks, docs, recordings — and use AI to automatically reformat it into multiple output types.'},
-          {icon:'📚', title:'AI Learning Experience',    desc:'Design a self-serve AI learning journey for teammates who haven\'t started yet. Make it engaging, practical, and reusable.'},
-          {icon:'📋', title:'Project Management AI',     desc:'Build an AI-powered tracker, sprint planner, retro tool, or status reporter your team could actually adopt next quarter.'},
-          {icon:'🌍', title:'Your Own Idea',             desc:'Think bigger. What would genuinely change how your team works? If it uses AI, solves a real problem, and ships — it qualifies.'},
-        ].map(o=>`<div style="background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:18px;">
-          <div style="font-size:24px;margin-bottom:8px">${o.icon}</div>
-          <div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:6px">${o.title}</div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.65">${o.desc}</div>
-        </div>`).join('')}
-      </div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--lime)">By April 10th 🎯</div>
     </div>
   </div>`;
 
