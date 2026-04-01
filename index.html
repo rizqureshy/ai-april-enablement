@@ -468,7 +468,82 @@ nav button.active { color:var(--lime); background:rgba(184,255,53,.1); }
   50%      { box-shadow:0 0 0 6px rgba(184,255,53,0); }
 }
 
-/* past and future cards — no dimming, no strikethrough, fully normal */
+/* MANDATORY FRIDAY card */
+.card.mandatory {
+  border-color:rgba(255,45,120,.3) !important;
+  background:rgba(255,45,120,.03) !important;
+}
+.mandatory-badge {
+  display:inline-flex; align-items:center; gap:4px;
+  background:var(--pink); color:#fff;
+  font-family:'DM Mono',monospace; font-size:9px; font-weight:700;
+  letter-spacing:1.5px; text-transform:uppercase;
+  padding:2px 8px; border-radius:100px;
+}
+.optional-badge {
+  display:inline-flex; align-items:center; gap:4px;
+  background:var(--s3); color:var(--muted);
+  font-family:'DM Mono',monospace; font-size:9px; font-weight:500;
+  letter-spacing:1px; text-transform:uppercase;
+  padding:2px 8px; border-radius:100px;
+  border:1px solid var(--border);
+}
+/* DOW label strip across top of each week */
+.dow-row {
+  display:grid; grid-template-columns:repeat(5,1fr); gap:11px;
+  margin-bottom:4px; padding:0 2px;
+}
+.dow-label {
+  font-family:'DM Mono',monospace; font-size:9px; font-weight:500;
+  letter-spacing:2px; text-transform:uppercase; color:var(--muted);
+  padding-left:4px;
+}
+.dow-label.fri { color:var(--pink); font-weight:700; }
+
+/* capstone section */
+.capstone-section {
+  margin-top:52px; padding:28px 32px;
+  background:linear-gradient(135deg,rgba(255,45,120,.06),rgba(155,92,255,.04));
+  border:2px solid rgba(255,45,120,.25); border-radius:20px;
+  position:relative; overflow:hidden;
+}
+.capstone-section::before {
+  content:''; position:absolute; top:-40px; right:-40px;
+  width:200px; height:200px; border-radius:50%;
+  background:radial-gradient(circle,rgba(255,45,120,.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.capstone-head {
+  display:flex; align-items:flex-start; gap:20px; margin-bottom:24px;
+}
+.capstone-icon { font-size:48px; flex-shrink:0; line-height:1; }
+.capstone-title {
+  font-family:'Bebas Neue',sans-serif; font-size:32px; letter-spacing:2px;
+  color:var(--pink); line-height:1; margin-bottom:6px;
+}
+.capstone-sub { font-size:13px; color:var(--muted); line-height:1.7; max-width:620px; }
+.capstone-meta {
+  display:flex; gap:16px; flex-wrap:wrap; margin-top:16px;
+}
+.capstone-pill {
+  display:flex; align-items:center; gap:7px;
+  background:rgba(255,45,120,.1); border:1px solid rgba(255,45,120,.2);
+  color:var(--pink); font-size:12px; font-weight:700;
+  padding:6px 14px; border-radius:100px;
+}
+.capstone-options {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px;
+}
+.capstone-option {
+  background:var(--s1); border:1px solid var(--border);
+  border-radius:14px; padding:20px;
+}
+.capstone-option-num {
+  font-family:'Bebas Neue',sans-serif; font-size:13px; letter-spacing:2px;
+  color:var(--pink); margin-bottom:6px;
+}
+.capstone-option-title { font-size:14px; font-weight:800; margin-bottom:6px; color:var(--text); }
+.capstone-option-desc  { font-size:12px; color:var(--muted); line-height:1.65; }
 
 .cbar { position:absolute; top:0; left:0; right:0; height:2px; border-radius:15px 15px 0 0; }
 .cghost {
@@ -663,38 +738,8 @@ nav button.active { color:var(--lime); background:rgba(184,255,53,.1); }
 .rules-list { font-size:12px; color:var(--muted); line-height:2.1; }
 .rules-list span { display:block; }
 
-/* ══ MUSIC BUTTON ══ */
-.music-btn {
-  display:flex; align-items:center; gap:7px;
-  background:var(--s1); border:1px solid var(--border);
-  color:var(--muted); font-family:'Outfit',sans-serif;
-  font-size:12px; font-weight:700;
-  padding:6px 14px; border-radius:100px;
-  cursor:pointer; transition:all .2s; flex-shrink:0;
-  position:relative; overflow:hidden;
-}
-.music-btn:hover { border-color:var(--border2); color:var(--text); }
-.music-btn.playing {
-  border-color:rgba(184,255,53,.4);
-  background:rgba(184,255,53,.08);
-  color:var(--lime);
-  box-shadow:0 0 16px rgba(184,255,53,.15);
-}
-.music-btn-bars {
-  display:flex; align-items:flex-end; gap:2px; height:14px;
-}
-.music-btn-bars span {
-  display:block; width:3px; border-radius:2px;
-  background:currentColor; opacity:.6;
-  transform-origin:bottom;
-}
-.music-btn.playing .music-btn-bars span:nth-child(1) { animation:bar1 .7s ease-in-out infinite; }
-.music-btn.playing .music-btn-bars span:nth-child(2) { animation:bar2 .5s ease-in-out infinite .1s; }
-.music-btn.playing .music-btn-bars span:nth-child(3) { animation:bar3 .6s ease-in-out infinite .2s; }
-.music-btn.playing .music-btn-bars span:nth-child(4) { animation:bar1 .8s ease-in-out infinite .05s; }
-@keyframes bar1 { 0%,100%{height:4px} 50%{height:14px} }
-@keyframes bar2 { 0%,100%{height:10px} 50%{height:4px} }
-@keyframes bar3 { 0%,100%{height:7px} 50%{height:13px} }
+
+ 50%{height:13px} }
 
 /* ── ADMIN MODE ── */
 .admin-btn {
@@ -897,16 +942,7 @@ nav button.active { color:var(--lime); background:rgba(184,255,53,.1); }
     <button onclick="showPage('leaderboard',this)">🏆 <span>Leaderboard</span></button>
     <button onclick="showPage('scoring',this)">⭐ <span>Scoring</span></button>
   </nav>
-  <div class="hbadge">April 2025</div>
-  <button class="music-btn" id="music-btn" onclick="toggleMusic()" title="Toggle music">
-    <div class="music-btn-bars">
-      <span style="height:4px"></span>
-      <span style="height:10px"></span>
-      <span style="height:7px"></span>
-      <span style="height:12px"></span>
-    </div>
-    <span id="music-label">Play Vibe</span>
-  </button>
+  <div class="hbadge">April 2026</div>
 </header>
 
 <!-- ══ HERO ══ -->
@@ -976,11 +1012,12 @@ nav button.active { color:var(--lime); background:rgba(184,255,53,.1); }
     <div class="tb-dot" style="background:var(--rep);box-shadow:0 0 8px var(--rep)"></div>
   </a>
 
+
   <!-- CENTER -->
   <div class="hero-center">
     <div class="hero-eyebrow">
       <span class="eyebrow-dot"></span>
-      35 Challenges · 9 Tracks · 5 Tools · 1 Champion
+      22 Challenges · 5 Mandatory Fridays · Capstone · 1 Champion
     </div>
     <div class="hero-main-title">
       <span class="hmt-ai">AI</span>
@@ -994,21 +1031,22 @@ nav button.active { color:var(--lime); background:rgba(184,255,53,.1); }
         <div class="kpi-l">Completed</div>
       </div>
       <div class="kpi">
-        <div class="kpi-n" style="color:var(--c4)">35</div>
+        <div class="kpi-n" style="color:var(--c4)">22</div>
         <div class="kpi-l">Challenges</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-n" style="color:var(--pink)">5</div>
+        <div class="kpi-l">Mandatory Fridays</div>
       </div>
       <div class="kpi">
         <div class="kpi-n" style="color:var(--cop)">9</div>
         <div class="kpi-l">Tracks</div>
       </div>
       <div class="kpi">
-        <div class="kpi-n" style="color:var(--c8)">5</div>
+        <div class="kpi-n" style="color:var(--c8)">7</div>
         <div class="kpi-l">AI Tools</div>
       </div>
-      <div class="kpi">
-        <div class="kpi-n" style="color:var(--c2)">350</div>
-        <div class="kpi-l">Max Pts</div>
-      </div>
+      
     </div>
   </div>
 </div>
@@ -1051,12 +1089,12 @@ nav button.active { color:var(--lime); background:rgba(184,255,53,.1); }
       <div class="sec-h">🏁 RACE TO THE FINISH</div>
       <button class="admin-btn" id="admin-btn" onclick="toggleAdmin()">🔒 Admin Mode</button>
     </div>
-    <p class="sec-sub" id="lb-sub">35 challenges. 24 racers. One champion. <span id="admin-status" style="color:var(--muted)">Quality scores are admin-only.</span></p>
+    <p class="sec-sub" id="lb-sub">22 optional challenges (5 pts each) · 4 Mandatory Fridays (graded by Eamonn) · Capstone. <span id="admin-status" style="color:var(--muted)">Quality scores are admin-only.</span></p>
 
     <!-- ADD / EDIT FORM -->
     <div class="lb-form">
       <div class="lb-field"><label>Player Name</label><input type="text" id="inp-name" class="lbinp lbin-name" placeholder="Add new player..."/></div>
-      <div class="lb-field"><label>Challenges Done</label><input type="number" id="inp-comp" class="lbinp lbin-num" min="0" max="35" value="0"/></div>
+      <div class="lb-field"><label>Challenges Done</label><input type="number" id="inp-comp" class="lbinp lbin-num" min="0" max="22" value="0"/></div>
       <div class="lb-field admin-only" id="qual-field" style="display:none">
         <label>Quality Points 🔐</label>
         <input type="number" id="inp-qual" class="lbinp lbin-num" min="0" value="0"/>
@@ -1094,57 +1132,64 @@ nav button.active { color:var(--lime); background:rgba(184,255,53,.1); }
 <div id="page-scoring" class="page">
   <div class="wrap">
     <div class="sec-h">HOW SCORING WORKS</div>
-    <p class="sec-sub">Quantity gets you on the board. Quality wins the championship.</p>
+    <p class="sec-sub">Simple, fair, and transparent. Every challenge counts.</p>
+
+    <!-- FORMULA -->
     <div class="sc-hero">
       <div>
         <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px">TOTAL SCORE FORMULA</div>
         <div class="sc-formula">
-          <div class="sc-box"><div class="sc-lbl">Per Challenge</div><div class="sc-val" style="color:var(--lime)">× 5 pts</div></div>
+          <div class="sc-box"><div class="sc-lbl">Optional Challenge</div><div class="sc-val" style="color:var(--lime)">5 pts each</div></div>
           <div class="sc-op">+</div>
-          <div class="sc-box"><div class="sc-lbl">Quality Vote</div><div class="sc-val" style="color:var(--pink)">≤ 5 pts</div></div>
+          <div class="sc-box"><div class="sc-lbl">Friday Quality Score</div><div class="sc-val" style="color:var(--pink)">by Eamonn</div></div>
           <div class="sc-op">+</div>
-          <div class="sc-box"><div class="sc-lbl">Bonus Badges</div><div class="sc-val" style="color:var(--c8)">+10–25</div></div>
+          <div class="sc-box"><div class="sc-lbl">Capstone Project</div><div class="sc-val" style="color:var(--c8)">50 pts</div></div>
         </div>
       </div>
-      <div style="border-left:1px solid var(--border);padding-left:28px;font-size:13px;color:var(--muted);line-height:2.1">
-        Max base: <strong style="color:var(--text)">350 pts</strong><br>
-        With bonuses: <strong style="color:var(--text)">~470 pts</strong><br>
-        Tie-break: Quality score wins<br>
-        Winner: <strong style="color:var(--lime)">May 1st 🎉</strong>
+      <div style="border-left:1px solid var(--border);padding-left:28px;font-size:13px;color:var(--muted);line-height:2.2">
+        18 optional challenges<br>
+        4 mandatory Fridays — graded by Eamonn<br>
+        Capstone — 50 pts, presented live<br>
+        <strong style="color:var(--lime)">Winner crowned May 1st 🏁</strong>
       </div>
     </div>
+
     <div class="sc-grid">
-      <div class="sc-card"><h3>📦 QUANTITY</h3>
-        <div class="scrow"><span>Complete a challenge</span><span class="scpts">5 pts</span></div>
-        <div class="scrow"><span>Complete all 35</span><span class="scpts">+35 pts</span></div>
-        <div class="scrow"><span>Submit same day</span><span class="scpts">+2 pts</span></div>
-        <div class="scrow"><span>Late submission</span><span class="scpts">+1 pt</span></div>
+
+      <!-- OPTIONAL -->
+      <div class="sc-card">
+        <h3>📦 OPTIONAL CHALLENGES</h3>
+        <div class="scrow"><span>Mon–Thu challenges (optional)</span><span class="scpts">5 pts</span></div>
+        <div class="scrow"><span>18 optional challenges available</span><span class="scpts">90 pts max</span></div>
+        <div class="scrow"><span>Complete any challenge to earn points</span><span class="scpts">your choice</span></div>
       </div>
-      <div class="sc-card"><h3>⭐ QUALITY (per task)</h3>
-        <div class="scrow"><span>Basic — technically works</span><span class="scpts">1</span></div>
-        <div class="scrow"><span>Good — solid effort</span><span class="scpts">2</span></div>
-        <div class="scrow"><span>Great — impressive</span><span class="scpts">3</span></div>
-        <div class="scrow"><span>Outstanding — WOW</span><span class="scpts">4</span></div>
-        <div class="scrow"><span>Legendary — unforgettable</span><span class="scpts">5</span></div>
+
+      <!-- MANDATORY FRIDAYS -->
+      <div class="sc-card">
+        <h3>🔴 MANDATORY FRIDAY CHALLENGES</h3>
+        <div class="scrow"><span>4 Friday challenges — mandatory for all</span><span class="scpts">graded</span></div>
+        <div class="scrow"><span>Quality score awarded by Eamonn</span><span class="scpts">extra pts</span></div>
+        <div class="scrow"><span>Based on effort, creativity & execution</span><span class="scpts">Eamonn only</span></div>
       </div>
-      <div class="sc-card"><h3>🎖️ BONUS BADGES</h3>
-        <div class="scrow"><span>🔥 7-Day Streak</span><span class="scpts">+10</span></div>
-        <div class="scrow"><span>🎵 Best Music (voted)</span><span class="scpts">+15</span></div>
-        <div class="scrow"><span>✨ Best Animation (voted)</span><span class="scpts">+15</span></div>
-        <div class="scrow"><span>💜 Best Vibe App (voted)</span><span class="scpts">+20</span></div>
-        <div class="scrow"><span>👑 Best Capstone (manager)</span><span class="scpts">+25</span></div>
+
+      <!-- CAPSTONE -->
+      <div class="sc-card">
+        <h3>🏆 CAPSTONE PROJECT</h3>
+        <div class="scrow"><span>Team of 3–4, mandatory</span><span class="scpts">50 pts</span></div>
+        <div class="scrow"><span>Live presented Apr 29–May 1</span><span class="scpts">to Enablement Team</span></div>
+        <div class="scrow"><span>Graded by AI Panel + team feedback</span><span class="scpts">weighted</span></div>
+        <div class="scrow"><span>Originality · Teamwork · Usefulness · Quality</span><span class="scpts">criteria</span></div>
       </div>
-      <div class="sc-card"><h3>📋 RULES</h3>
-        <div class="rules-list">
-          <span>✅ Post in <strong style="color:var(--text)">#ai-april</strong> Slack channel</span>
-          <span>✅ Tag which tool you used each post</span>
-          <span>✅ Vibe Coding = share a live URL</span>
-          <span>✅ One caption line per submission</span>
-          <span>✅ Quality voted by team — every Friday</span>
-          <span>✅ Only approved tools, no exceptions</span>
-          <span>🏆 Winner crowned May 1st</span>
-        </div>
+
+      <!-- RULES -->
+      <div class="sc-card">
+        <h3>📋 SUBMISSION RULES</h3>
+        <div class="scrow"><span>Post in the <strong style="color:var(--text)">#ai-april</strong> Teams channel</span><span class="scpts">required</span></div>
+        <div class="scrow"><span>Mention which AI tool you used</span><span class="scpts">required</span></div>
+        <div class="scrow"><span>Include the Challenge Name in your post</span><span class="scpts">required</span></div>
+        <div class="scrow"><span>Use any AI tool of your choice</span><span class="scpts">no restrictions</span></div>
       </div>
+
     </div>
   </div>
 </div>
@@ -1162,93 +1207,168 @@ const TRACKS=[
   {icon:'💜',name:'Vibe Coding',              tool:'Lovable·Base44·Replit',ttags:['vib'],      color:'var(--c8)',bg:'rgba(232,121,249,.08)',bd:'rgba(232,121,249,.22)'},
 ];
 const TL={gpt:'ChatGPT',cop:'Copilot',cla:'Claude',gem:'Gemini',vib:'Vibe'};
+
+// Week dates in April 2026 (Mon–Fri)
+// Apr 1=Wed, so Week 1 = Apr 6–10, W2=Apr13–17, W3=Apr20–24, W4=Apr27–May1, W5=May4–8
 const WEEKS=[
-  {num:1,title:'Warm-Up Week',    sub:'Taste every track — one challenge from each major category.',      color:'var(--c4)'},
-  {num:2,title:'Level Up',        sub:'Round two across all tracks — sharper prompts, bolder outputs.',    color:'var(--c0)'},
-  {num:3,title:'Mid-Month Push',  sub:'Intermediate challenges across all 9 tracks.',                      color:'var(--c2)'},
-  {num:4,title:'Creative Sprint', sub:'Hardest non-vibe challenges — animation, data, storytelling.',      color:'var(--c5)'},
-  {num:5,title:'Build & Ship',    sub:'Graphic Novel finale + all 4 Vibe Coding apps + THE CAPSTONE.',     color:'var(--c8)'},
+  {num:1, title:'Week 1 — Apr 1–3 (Wed–Fri)',   sub:'3-day kickoff. Wednesday & Thursday optional. Friday is mandatory.',      color:'var(--c4)'},
+  {num:2, title:'Week 2 — Apr 6–10',                 sub:'First full week — step it up, sharper prompts, bolder outputs.',       color:'var(--c0)'},
+  {num:3, title:'Week 3 — Apr 13–17',                sub:'Mid-month — storytelling, data, and multi-tool challenges.',            color:'var(--c2)'},
+  {num:4, title:'Week 4 — Apr 22–25',                sub:'Build week — dashboards, vibe coding, and real work tools.',            color:'var(--c5)'},
+  {num:5, title:'Week 5 — Apr 27–30',  sub:'Final week — Mon to Thu only. The plan wraps on April 30th.', color:'var(--c8)'},
 ];
 
+// W1 has 3 challenges (Wed/Thu/Fri), W2-W5 have 5 each (Mon-Fri)
+const DOW_FULL  = ['MON','TUE','WED','THU','FRI 🔴'];
+const DOW_WEEK1 = ['WED','THU','FRI 🔴'];
+
+// 23 challenges total: W1=3, W2-W5=5 each
 const CHS=[
-  // WEEK 1
-  {day:1, week:1,cat:0,emoji:'🦸',diff:1,title:'AI Alter Ego',desc:'Rewrite your professional bio as a superhero origin story — your superpower, your origin moment, and your nemesis. Then use Copilot to reformat it as a LinkedIn post. Share both.',tools:['gpt','cop']},
-  {day:2, week:1,cat:1,emoji:'🚀',diff:2,title:'Instant Deck',desc:'Give Copilot one sentence (e.g. "Why our team should embrace AI this year") and generate a complete 6-slide deck with titles, bullets, and speaker notes. Share the output as-is.',tools:['cop']},
-  {day:3, week:1,cat:2,emoji:'🎶',diff:2,title:'Team Jingle',desc:'Write a 3-sentence brief about your team\'s vibe and values. Feed it to Gemini and generate a 30-second team jingle. Share the audio and the exact prompt you used.',tools:['gem']},
-  {day:4, week:1,cat:5,emoji:'🎨',diff:1,title:'Triple Style Portrait',desc:'Generate a self-portrait or avatar in 3 wildly different styles using Copilot Designer: watercolour, cyberpunk neon, and Renaissance oil painting. Same subject — only the style tag changes.',tools:['cop']},
-  {day:5, week:1,cat:4,emoji:'⏱️',diff:2,title:'Meeting Agenda Timer',desc:'Build a meeting timer app — add agenda items with durations, it counts down each one and alerts when time\'s up. Runs live in the browser. Something you\'d actually use in a real meeting.',tools:['gpt','cla']},
-  {day:6, week:1,cat:6,emoji:'📊',diff:2,title:'Chart from Chaos',desc:'Take any raw data table — real or invented. Use Copilot in Excel to generate 3 different chart types from it. Share all 3 with a one-line insight underneath each.',tools:['cop']},
-  {day:7, week:1,cat:3,emoji:'🔄',diff:2,title:'Process Flow Animation',desc:'Describe any 5-step work process to Claude. Ask it to build an animated HTML flowchart where each step reveals in sequence. Must be click-through interactive — not auto-play.',tools:['cla']},
-  // WEEK 2
-  {day:8, week:2,cat:0,emoji:'🎭',diff:1,title:'Tone Tornado',desc:'Write one email saying you\'ll be 5 minutes late. Have AI rewrite it in 5 tones: Shakespearean, passive-aggressive, Gen Z, corporate buzzword soup, and pirate. Share all 5 — team votes.',tools:['gpt','cop','cla']},
-  {day:9, week:2,cat:1,emoji:'📉',diff:3,title:'Data Narrative Slide',desc:'Pick 5 real numbers from your work — KPIs, volumes, whatever you track. Paste into Copilot and build one compelling story slide with a headline insight. No raw tables — make the data talk.',tools:['cop']},
-  {day:10,week:2,cat:2,emoji:'🎸',diff:3,title:'Mood Soundtrack',desc:'Generate 3 music tracks for 3 work scenarios: deep focus session, relaxed Friday wind-down, and a high-pressure incident response. One prompt each — compare which nails each mood best.',tools:['gem']},
-  {day:11,week:2,cat:5,emoji:'🌌',diff:2,title:'Alternate Universe Office',desc:'Generate your workplace in 3 alternate realities using Copilot Designer: underwater research lab, medieval castle, and space station. Should feel like the same place — just a different universe.',tools:['cop']},
-  {day:12,week:2,cat:4,emoji:'🎲',diff:2,title:'Team Decision Spinner',desc:'Build an animated wheel spinner — add names or options, click to spin, get a winner with an announcement screen. Fast, fun, and genuinely useful for any team that debates too long.',tools:['gpt','cla']},
-  {day:13,week:2,cat:6,emoji:'🔢',diff:3,title:'Formula Wizard',desc:'Describe 3 Excel calculations you genuinely need at work. Use Copilot to write the formulas, explain them in plain English, and show them running on sample data. Share results and formulas.',tools:['cop']},
-  {day:14,week:2,cat:3,emoji:'📅',diff:3,title:'Animated Project Timeline',desc:'Give Claude a project with 6 milestones and dates. Ask it to build an animated horizontal timeline that draws itself left to right — with milestone labels, dates, and status indicators.',tools:['cla']},
-  // WEEK 3
-  {day:15,week:3,cat:0,emoji:'📢',diff:2,title:'Content Multiplier',desc:'Take one idea from your current project. Expand it into 5 formats in a single session: a tweet thread, a LinkedIn post, an internal email intro, a meeting talking point, and a one-pager headline.',tools:['gpt','cop']},
-  {day:16,week:3,cat:1,emoji:'💡',diff:3,title:'Internal Pitch Deck',desc:'Use Copilot to build a 5-slide pitch for an idea you\'d genuinely bring to leadership. Copilot writes all the copy and suggests layout. Refine with follow-up prompts until it feels real.',tools:['cop']},
-  {day:17,week:3,cat:2,emoji:'🎤',diff:3,title:'AI Original Song',desc:'Write full song lyrics about your job, team, or project with ChatGPT — pick a genre, write a verse, chorus, and bridge. Then use Gemini to generate the actual music track. Submit both.',tools:['gpt','gem']},
-  {day:18,week:3,cat:5,emoji:'📦',diff:2,title:'Product Concept Art',desc:'Invent 3 products from your industry that don\'t yet exist. Generate professional concept art for each with Copilot Designer. Must look plausible and launchable — not joke items.',tools:['cop']},
-  {day:19,week:3,cat:4,emoji:'🧠',diff:3,title:'Industry Quiz App',desc:'Build a 10-question multiple-choice quiz about your industry or team knowledge. Score tracking, progress indicator, and a final results screen with a performance rating.',tools:['gpt','cla']},
-  {day:20,week:3,cat:6,emoji:'📝',diff:2,title:'Data Story in Plain English',desc:'Paste any data table into Copilot in Excel. Ask it to write a plain-English summary, surface the top 3 insights, and flag anomalies. Let the AI do the analysis — you present it.',tools:['cop']},
-  {day:21,week:3,cat:3,emoji:'🌐',diff:3,title:'Clickable Org Chart',desc:'Describe your team structure to Claude. Ask it to build a clickable animated org chart where clicking any person expands their role and responsibilities. Must be at least 3 levels deep.',tools:['cla']},
-  // WEEK 4
-  {day:22,week:4,cat:0,emoji:'📋',diff:2,title:'Meeting Recap Machine',desc:'Paste your roughest, most chaotic meeting notes into ChatGPT or Copilot. Extract: a clean 5-line summary, 5 action items with owners, and a ready-to-send follow-up email — all from the same messy input.',tools:['gpt','cop']},
-  {day:23,week:4,cat:1,emoji:'🎤',diff:3,title:'One-Slide TED Talk',desc:'Script a 3-minute talk on any topic you care about. Use Copilot to design exactly one slide supporting your entire talk. One slide only — the constraint forces clarity.',tools:['cop','gpt']},
-  {day:24,week:4,cat:5,emoji:'🏙️',diff:3,title:'Workspace 2035',desc:'Generate your ideal future workspace in 2035. Then generate its polar opposite: the bleakest office imaginable. Write a one-line caption for each. Share the contrasting pair.',tools:['cop']},
-  {day:25,week:4,cat:4,emoji:'💬',diff:3,title:'Standup Bot',desc:'Build a standup assistant — asks the 3 standup questions one by one, collects answers, then formats and copies a clean post to clipboard. Ready to paste straight into Slack or Teams.',tools:['gpt','cla']},
-  {day:26,week:4,cat:6,emoji:'🖥️',diff:4,title:'Full Dashboard Build',desc:'Build a complete multi-chart Excel dashboard from a single dataset using Copilot. Must include at least 4 chart types, a summary stats section, and conditional formatting. Screenshot the result.',tools:['cop']},
-  {day:27,week:4,cat:7,emoji:'🌟',diff:3,title:'Your Origin Story',desc:'Write your professional journey — how you got to where you are — using ChatGPT. Then illustrate it as a 4-panel graphic novel with DALL·E. Each panel matches a real scene. Caption every panel.',tools:['gpt']},
-  {day:28,week:4,cat:3,emoji:'📡',diff:4,title:'Live Ops Dashboard',desc:'Ask Claude to build an animated operations dashboard — live-updating metrics, pulsing status indicators, filling progress bars. Should look like a real monitoring screen, not a static wireframe.',tools:['cla','gpt']},
-  // WEEK 5
-  {day:29,week:5,cat:7,emoji:'🔮',diff:3,title:'Industry Fable',desc:'Write a short fable set in your industry, 5 years from now. Characters are archetypes: the innovator, the skeptic, the manager, the intern. Illustrate 2 key scenes and each character with DALL·E.',tools:['gpt']},
-  {day:30,week:5,cat:7,emoji:'🌍',diff:4,title:'The World Without Your Team',desc:'Write a 6-scene visual story imagining what your company looks like if your team never existed. ChatGPT writes the script. DALL·E illustrates every scene. Build a complete graphic narrative.',tools:['gpt']},
-  {day:31,week:5,cat:8,emoji:'🎯',diff:2,title:'Vibe App #1 — Mood Tracker',desc:'Open Lovable.dev or Base44. Say: "Build a daily mood tracker — pick today\'s mood from 5 emojis, add an optional note, and see a weekly mood history chart." Ship it. Share the live link.',tools:['vib'],vibe:true},
-  {day:32,week:5,cat:8,emoji:'🏆',diff:3,title:'Vibe App #2 — Team Leaderboard',desc:'Build a live team score tracker — add players, update scores, see live rankings with progress bars and status badges. Must be shareable as a live URL your whole team can open and interact with.',tools:['vib'],vibe:true},
-  {day:33,week:5,cat:8,emoji:'🎮',diff:3,title:'Vibe App #3 — Office Party Game',desc:'Build a browser party game for 2–6 players — trivia, word association, a reaction challenge. Must track scores, support multiple rounds, and show a winner screen. Use Base44 or Replit.',tools:['vib'],vibe:true},
-  {day:34,week:5,cat:8,emoji:'🛠️',diff:4,title:'Vibe App #4 — Real Work Tool',desc:'Build something your team would actually use: sprint planner, retro board, OKR tracker, meeting cost calculator. Use Lovable, Base44, or Replit. Ship a live link. The more useful = higher score.',tools:['vib'],vibe:true},
-  {day:35,week:5,cat:8,emoji:'👑',diff:5,title:'THE CAPSTONE — Your AI Masterpiece',desc:'Use ALL 5 TOOLS. Deliver one cohesive output: written content + a visual deck + a generated music track + an animated workflow + a live vibe-coded app. Make it completely unforgettable.',tools:['gpt','cop','cla','gem','vib'],special:true},
+  // WEEK 1: Apr 1 (Wed), Apr 2 (Thu), Apr 3 (Fri mandatory)
+  {day:1,  week:1, dow:1, cat:0, emoji:'🦸', diff:1, title:'AI Alter Ego',
+   desc:'Rewrite your professional bio as a superhero origin story — your superpower, your origin moment, and your nemesis. Have Copilot reformat it as a LinkedIn post. Share both.',
+   tools:['gpt','cop']},
+  {day:2,  week:1, dow:2, cat:5, emoji:'🎨', diff:1, title:'Triple Style Portrait',
+   desc:'Generate yourself in 3 wildly different art styles using Copilot Designer: watercolour, cyberpunk neon, and Renaissance oil painting. Same description, only the style tag changes.',
+   tools:['cop']},
+  {day:3,  week:1, dow:3, cat:1, emoji:'📊', diff:3, title:'AI Strategy Deck',
+   desc:'FRIDAY CHALLENGE ★ Build a 6-slide "AI in Our Team" strategy deck using Copilot in PowerPoint. Must include: Current State, AI Opportunity, 3 Recommended Tools with use cases, Implementation Roadmap, Risks & Mitigations, and Success Metrics. Use Copilot to write every slide, then add speaker notes. Share the final deck.',
+   tools:['cop','gpt'], mandatory:true},
+
+  // WEEK 2: Apr 6 (Mon) to Apr 10 (Fri mandatory)
+  {day:4,  week:2, dow:1, cat:0, emoji:'🎭', diff:1, title:'Tone Tornado',
+   desc:'Write one email saying you\'ll be 5 minutes late. Have AI rewrite it in 5 very different tones: Shakespearean, passive-aggressive, Gen Z, corporate buzzword soup, and pirate. Share all 5.',
+   tools:['gpt','cop','cla']},
+  {day:5,  week:2, dow:2, cat:5, emoji:'🌌', diff:2, title:'Alternate Universe Office',
+   desc:'Generate your workplace reimagined in 3 alternate realities using Copilot Designer: underwater research lab, medieval castle, and space station. Should feel like the same place — different universe.',
+   tools:['cop']},
+  {day:6,  week:2, dow:3, cat:2, emoji:'🎸', diff:2, title:'Mood Soundtrack',
+   desc:'Generate 3 music tracks for 3 work scenarios: deep focus session, Friday afternoon wind-down, and a high-pressure incident. One Gemini prompt each — compare which captures each mood best.',
+   tools:['gem']},
+  {day:7,  week:2, dow:4, cat:3, emoji:'🔄', diff:2, title:'Process Flow Animation',
+   desc:'Describe any 5-step work process to Claude. Ask it to build an animated HTML flowchart where each step reveals in sequence with smooth transitions. Must be click-through interactive.',
+   tools:['cla']},
+  {day:8,  week:2, dow:5, cat:4, emoji:'📈', diff:4, title:'Live Team Dashboard',
+   desc:'FRIDAY CHALLENGE ★ Build a fully functional live team operations dashboard using Claude Artifacts. Must include: at least 4 chart types, animated metrics, status indicators, and a team progress tracker. Use ChatGPT to design the data story first, then Claude to build the live app. Must look polished enough to show leadership.',
+   tools:['cla','gpt'], mandatory:true},
+
+  // WEEK 3: Apr 13 (Mon) to Apr 17 (Fri mandatory)
+  {day:9,  week:3, dow:1, cat:0, emoji:'📢', diff:2, title:'Content Multiplier',
+   desc:'Take one real idea from your current project. Expand it into 5 formats in a single AI session: a tweet thread, a LinkedIn post, an internal email, a meeting talking point, and a one-pager headline.',
+   tools:['gpt','cop']},
+  {day:10, week:3, dow:2, cat:7, emoji:'🌟', diff:3, title:'Your Origin Story',
+   desc:'Write your professional journey — how you got here — using ChatGPT. Illustrate it as a 4-panel graphic novel with DALL·E. Each panel must match a real scene from your story.',
+   tools:['gpt']},
+  {day:11, week:3, dow:3, cat:2, emoji:'🎤', diff:3, title:'AI Original Song',
+   desc:'Write full original lyrics about your job, team, or project with ChatGPT — pick a real genre, include verse, chorus, and bridge. Then use Gemini to generate the actual music. Submit both.',
+   tools:['gpt','gem']},
+  {day:12, week:3, dow:4, cat:3, emoji:'📅', diff:3, title:'Animated Project Timeline',
+   desc:'Give Claude a real or fictional project with 6 milestones and dates. Ask it to build an animated horizontal timeline that draws itself left to right with milestone labels and status indicators.',
+   tools:['cla']},
+  {day:13, week:3, dow:5, cat:0, emoji:'🎬', diff:4, title:'AI-Powered Project Pitch',
+   desc:'FRIDAY CHALLENGE ★ Create a complete multi-format pitch for a real initiative from your work. Deliverables: (1) A polished 5-slide Copilot PPT deck, (2) A 60-second explainer video script with storyboard (ChatGPT), (3) An animated process workflow diagram (Claude), and (4) A Gemini-generated music track for the presentation. All four submitted together.',
+   tools:['cop','gpt','cla','gem'], mandatory:true},
+
+  // WEEK 4: Apr 22 (Wed) to Apr 25 (Fri mandatory) — Apr 21 = Easter Monday
+  {day:14, week:4, dow:1, cat:6, emoji:'📊', diff:2, title:'Chart from Chaos',
+   desc:'Take any raw data from your work (or invent realistic data). Use Copilot in Excel to generate 3 different chart types. Share all 3 with a one-line insight — let the data speak.',
+   tools:['cop']},
+  {day:15, week:4, dow:2, cat:6, emoji:'🔢', diff:3, title:'Formula Wizard',
+   desc:'Describe 3 Excel calculations you genuinely need at work. Use Copilot to write the formulas, explain them in plain English, and demonstrate them on sample data. Share the results.',
+   tools:['cop']},
+  {day:16, week:4, dow:3, cat:4, emoji:'💬', diff:3, title:'Standup Bot',
+   desc:'Build a daily standup assistant — asks the 3 standup questions one by one, collects answers, formats and copies a clean post to clipboard. Ready to paste straight into Slack or Teams.',
+   tools:['gpt','cla']},
+  {day:17, week:4, dow:4, cat:5, emoji:'📦', diff:3, title:'Product Concept Art',
+   desc:'Invent 3 products from your industry that don\'t yet exist. Generate professional concept art for each with Copilot Designer. Must look plausible and launchable — not joke items.',
+   tools:['cop']},
+  {day:18, week:4, dow:5, cat:8, emoji:'🛠️', diff:5, title:'Vibe Code a Real Work Tool',
+   desc:'FRIDAY CHALLENGE ★ Build and ship a fully functional app that solves a real problem your team faces — using Lovable.dev, Base44, or Replit. Must be live at a shareable URL. Submit the live link + a 3-sentence explanation of the problem it solves and who it helps.',
+   tools:['vib','gpt'], mandatory:true, vibe:true},
+
+  // WEEK 5: Apr 27 (Mon) to Apr 30 (Thu) — plan ends April 30, no Friday
+  {day:19, week:5, dow:1, cat:0, emoji:'📋', diff:2, title:'Meeting Recap Machine',
+   desc:'Paste your roughest, most chaotic meeting notes into ChatGPT or Copilot. Extract: a clean 5-line summary, 5 action items with owners, and a ready-to-send follow-up email — all from the same messy input.',
+   tools:['gpt','cop']},
+  {day:20, week:5, dow:2, cat:7, emoji:'🔮', diff:3, title:'Industry Fable',
+   desc:'Write a short fable set in your industry 5 years from now. Characters: the innovator, the skeptic, the manager, the intern. Illustrate 2 key scenes and each character with DALL·E.',
+   tools:['gpt']},
+  {day:21, week:5, dow:3, cat:3, emoji:'📡', diff:4, title:'Live Ops Dashboard',
+   desc:'Ask Claude to build an animated operations dashboard — live-updating metrics, pulsing status indicators, filling progress bars. Must look like a real monitoring screen, not a static wireframe.',
+   tools:['cla','gpt']},
+  {day:22, week:5, dow:4, cat:3, emoji:'🌐', diff:3, title:'Clickable Org Chart',
+   desc:'Describe your team structure to Claude. Ask it to build an animated org chart where clicking any person expands their role and responsibilities. Must be at least 3 levels deep.',
+   tools:['cla']},
 ];
 
-let done=new Set(), currentView='week', activeWeek=0;
+/* CHALLENGE DATES
+   W1: Apr 1(Wed), Apr 2(Thu), Apr 3(Fri-mand)   days 1–3
+   W2: Apr 6(Mon)–Apr 10(Fri-mand)               days 4–8
+   W3: Apr 13(Mon)–Apr 17(Fri-mand)              days 9–13
+   W4: Apr 22(Wed)–Apr 25(Fri-mand)              days 14–18
+   W5: Apr 27(Mon)–Apr 30(Thu) NO FRIDAY         days 19–22  */
+const CHALLENGE_DATES = [
+  null,
+  new Date('2026-04-01'), new Date('2026-04-02'), new Date('2026-04-03'),
+  new Date('2026-04-06'), new Date('2026-04-07'), new Date('2026-04-08'), new Date('2026-04-09'), new Date('2026-04-10'),
+  new Date('2026-04-13'), new Date('2026-04-14'), new Date('2026-04-15'), new Date('2026-04-16'), new Date('2026-04-17'),
+  new Date('2026-04-22'), new Date('2026-04-23'), new Date('2026-04-24'), new Date('2026-04-25'), new Date('2026-04-26'),
+  new Date('2026-04-27'), new Date('2026-04-28'), new Date('2026-04-29'), new Date('2026-04-30'),
+];
 
-/* ── DATE AWARENESS ──
-   Challenges map to April 1–35 (April 1 = day 1, April 30 = day 30,
-   days 31-35 spill into May 1-5).
-   Past days are auto-marked done. Today is highlighted. Future is locked. */
-function getAprilDay() {
-  const now = new Date();
-  const y = now.getFullYear(), m = now.getMonth(), d = now.getDate();
-  // April = month 3 (0-indexed)
-  if (m === 3) return d;          // April 1–30 → day 1–30
-  if (m === 4 && d <= 5) return 30 + d; // May 1–5 → day 31–35
-  if (m < 3) return 0;            // before April → nothing active
-  return 36;                      // after May 5 → all done
-}
+// ── CAPSTONE PROJECT ──
+const CAPSTONE = {
+  emoji: '🏆',
+  title: 'AI APRIL CAPSTONE PROJECT',
+  sub: 'Team-based. Mandatory. 50 points. Due May 1st.',
+  desc: 'Teams of 3–4 people will collaborate to design and deliver a complete AI-powered solution for a real business problem within Equinix or your department. This is not an individual challenge — it requires planning, coordination, and the combined use of multiple AI tools across the team.',
+  rules: [
+    '👥 Teams of 3–4 people — self-organised',
+    '📣 Announce your team in the #ai-april channel by April 11',
+    '🛠️ Must use a minimum of 3 different AI tools',
+    '📅 Final submission due: May 1st',
+    '🏆 Worth 50 points — judged by the manager',
+    '⭐ Graded on: Ambition, Real-World Applicability, Multi-Tool Usage, Presentation Quality',
+  ],
+  options: [
+    {num:'Option A', icon:'🤖', title:'AI-Powered Internal Tool',
+     desc:'Build a fully functional app or tool your department would actually adopt. Must be live and demonstrable. Use at least one Vibe Coding platform plus AI-generated content and a process diagram.'},
+    {num:'Option B', icon:'📚', title:'AI Learning Experience',
+     desc:'Design a complete AI learning module for a team that hasn\'t used AI yet. Include: a curriculum outline (ChatGPT), training deck (Copilot PPT), interactive quiz app (Claude), and a Gemini-generated audio intro for each module.'},
+    {num:'Option C', icon:'🗺️', title:'AI Adoption Roadmap',
+     desc:'Build a full AI adoption roadmap for your team or function. Deliverables: stakeholder deck (Copilot), animated process flow (Claude), a vibe-coded tracking tool (Lovable/Base44), written strategy doc (ChatGPT), and a Gemini audio summary for leadership.'},
+  ]
+};
 
-function seedDatesFromCalendar() {
-  const today = getAprilDay();
-  // auto-mark all past days as done (don't override manual overrides)
-  CHS.forEach(c => {
-    if (c.day < today) done.add(c.day);
-  });
+let done = new Set();
+let currentView = 'week';
+let activeWeek  = 0;
+
+function todayMidnight() {
+  const d = new Date(); d.setHours(0,0,0,0); return d;
 }
 
 function getDayStatus(day) {
-  const today = getAprilDay();
-  if (day === today) return 'today';
-  if (day < today)  return 'past';
+  const today = todayMidnight();
+  const cd = CHALLENGE_DATES[day];
+  if (!cd) return 'future';
+  const cdm = new Date(cd); cdm.setHours(0,0,0,0);
+  if (cdm.getTime() === today.getTime()) return 'today';
+  if (cdm < today) return 'past';
   return 'future';
+}
+
+function seedDatesFromCalendar() {
+  CHS.forEach(c => {
+    if (getDayStatus(c.day) === 'past') done.add(c.day);
+  });
 }
 
 function tt(k){return`<span class="tt ${k}">${TL[k]}</span>`;}
 function diffs(n){return'<div class="diff">'+Array.from({length:5},(_,i)=>`<div class="dd${i<n?' on':''}"></div>`).join('')+'</div>';}
 
 function updateProgress(){
-  const n=done.size,tot=35,pct=Math.round(n/tot*100);
+  const n=done.size,tot=22,pct=Math.round(n/tot*100);
   document.getElementById('kpi-done').textContent=n;
   document.getElementById('prog-fill').style.width=pct+'%';
   document.getElementById('prog-label').textContent=`${n} / ${tot} completed`;
@@ -1259,29 +1379,30 @@ function cardHtml(c,t){
   const isDone   = done.has(c.day);
   const status   = getDayStatus(c.day);
   const isToday  = status === 'today';
+  const isMand   = !!c.mandatory;
 
-  // Class list
   let cls = 'card';
   if (isDone)    cls += ' done';
-  if (c.special) cls += ' capstone';
   if (c.vibe)    cls += ' vibe';
   if (isToday)   cls += ' today';
+  if (isMand)    cls += ' mandatory';
 
-  // Day chip — inject TODAY badge if applicable
+  const dowLabel = DOW_FULL[(c.dow||1)-1];
   const chipContent = isToday
     ? `<div style="display:flex;align-items:center;gap:7px;">
-        <div class="c-chip" style="color:${t.color};border-color:${t.bd};background:${t.bg}">${t.icon} Day ${c.day}</div>
+        <div class="c-chip" style="color:${t.color};border-color:${t.bd};background:${t.bg}">${t.icon} ${dowLabel}</div>
         <span class="today-badge">🔥 Today</span>
        </div>`
-    : `<div class="c-chip" style="color:${t.color};border-color:${t.bd};background:${t.bg}">${t.icon} Day ${c.day}</div>`;
+    : `<div class="c-chip" style="color:${isMand?'var(--pink)':''+t.color};border-color:${isMand?'rgba(255,45,120,.3)':t.bd};background:${isMand?'rgba(255,45,120,.08)':t.bg}">${isMand?'🔴':''}${dowLabel}</div>`;
 
   return`<div class="${cls}" id="card-${c.day}">
-    <div class="cbar" style="background:${isToday ? 'var(--lime)' : t.color}"></div>
+    <div class="cbar" style="background:${isToday?'var(--lime)':isMand?'var(--pink)':t.color}"></div>
     <div class="cghost">${c.day}</div>
     <div class="c-top">
       ${chipContent}
       <div class="c-right">
         ${isDone ? '<div class="ck-done">✓</div>' : ''}
+        ${isMand ? '<span class="mandatory-badge">Mandatory</span>' : '<span class="optional-badge">Optional</span>'}
       </div>
     </div>
     <span class="c-emoji">${c.emoji}</span>
@@ -1298,25 +1419,113 @@ function renderWeekView(){
   const root=document.getElementById('challenges-root');
   const weeks=activeWeek===0?WEEKS:WEEKS.filter(w=>w.num===activeWeek);
   let html='';
+
   weeks.forEach(w=>{
-    const chs=CHS.filter(c=>c.week===w.num);
+    const chs=CHS.filter(c=>c.week===w.num).sort((a,b)=>a.dow-b.dow);
     const doneCount=chs.filter(c=>done.has(c.day)).length;
-    const trackTypes=[...new Set(chs.map(c=>c.cat))].map(i=>TRACKS[i]);
-    const vibeBlock=chs.some(c=>c.vibe)?`<div class="vibe-callout"><div class="vibe-callout-icon">💜</div><div class="vibe-callout-body"><strong>Vibe Coding</strong> — describe an app in plain English, AI builds it live. Free tiers on <a href="https://lovable.dev" target="_blank">Lovable.dev</a>, <a href="https://base44.com" target="_blank">Base44.com</a>, <a href="https://replit.com" target="_blank">Replit.com</a>. Submit as a <strong>live URL</strong>.</div></div>`:'';
+    const mandDone=chs.filter(c=>c.mandatory&&done.has(c.day)).length;
+    const hasFri=chs.find(c=>c.dow===5);
+
+    // DOW header — W1=3 days (Wed/Thu/Fri), W5=4 days (Mon-Thu), others=5 (Mon-Fri)
+    const dowLabels  = w.num === 1 ? DOW_WEEK1 : w.num === 5 ? ['MON','TUE','WED','THU'] : DOW_FULL;
+    const gridCols   = w.num === 1 ? 3 : w.num === 5 ? 4 : 5;
+    const dowHeaders = dowLabels.map((d,i) => {
+      const isFri = (i === dowLabels.length - 1);
+      return `<div class="dow-label${isFri?' fri':''}">${d}</div>`;
+    }).join('');
+
     html+=`<div class="week-section">
       <div class="week-head">
         <div class="week-num">W${w.num}</div>
         <div class="week-meta">
-          <div class="week-title" style="color:${w.color}">Week ${w.num} — ${w.title}</div>
+          <div class="week-title" style="color:${w.color}">${w.title}</div>
           <div class="week-sub">${w.sub}</div>
         </div>
-        <div class="week-pills">${trackTypes.map(t=>`<span class="wpill" style="background:${t.bg};color:${t.color};border-color:${t.bd}">${t.icon}</span>`).join('')}</div>
-        <div class="week-done-ct">${doneCount}/${chs.length}</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;flex-shrink:0">
+          <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)">${doneCount}/${chs.length} done</span>
+          ${mandDone>0?`<span class="mandatory-badge">Friday ✓</span>`:hasFri?`<span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--pink)">Friday pending</span>`:''}
+        </div>
       </div>
-      ${vibeBlock}
-      <div class="cgrid">${chs.map(c=>cardHtml(c,TRACKS[c.cat])).join('')}</div>
+      <div class="dow-row" style="grid-template-columns:repeat(${gridCols},1fr)">${dowHeaders}</div>
+      <div style="display:grid;grid-template-columns:repeat(${gridCols},1fr);gap:11px;">
+        ${chs.map(c=>cardHtml(c,TRACKS[c.cat])).join('')}
+      </div>
     </div>`;
   });
+
+  // Capstone section — always shown at bottom
+  html+=`<div class="capstone-section">
+    <div class="capstone-head">
+      <div class="capstone-icon">🏆</div>
+      <div style="flex:1">
+        <div class="capstone-title">AI APRIL CAPSTONE PROJECT</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+          <span class="mandatory-badge">Mandatory</span>
+          <span class="capstone-pill">👥 Teams of 3–4</span>
+          <span class="capstone-pill">🏆 50 Points</span>
+          <span class="capstone-pill">📅 Present Apr 29–May 1</span>
+          <span class="capstone-pill">🎯 Final Due May 1st</span>
+        </div>
+        <div class="capstone-sub">Team up with 3–4 colleagues to design and deliver a real AI-powered project that makes a genuine difference. This is your chance to go beyond individual challenges and build something your team would actually use. Graded by an AI Panel and team feedback — weighted on Idea Originality, Teamwork, Business Enablement Suitability, Usefulness, and Quality.</div>
+      </div>
+    </div>
+
+    <!-- KEY DATES -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:28px;">
+      <div style="background:var(--s1);border:1px solid rgba(255,45,120,.25);border-radius:12px;padding:16px;">
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--pink);margin-bottom:6px">STEP 1</div>
+        <div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:4px">Announce Your Team</div>
+        <div style="font-size:12px;color:var(--muted)">Post your team of 3–4 in the <strong style="color:var(--text)">#ai-april</strong> channel</div>
+        <div style="margin-top:8px;font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--pink)">By Friday Apr 3</div>
+      </div>
+      <div style="background:var(--s1);border:1px solid rgba(255,45,120,.25);border-radius:12px;padding:16px;">
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--pink);margin-bottom:6px">STEP 2</div>
+        <div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:4px">Present Your Idea</div>
+        <div style="font-size:12px;color:var(--muted)">Share your Capstone concept with the group for feedback</div>
+        <div style="margin-top:8px;font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--pink)">By Friday Apr 10</div>
+      </div>
+      <div style="background:var(--s1);border:1px solid rgba(255,45,120,.25);border-radius:12px;padding:16px;">
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--pink);margin-bottom:6px">STEP 3</div>
+        <div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:4px">Live Presentation</div>
+        <div style="font-size:12px;color:var(--muted)">Present live to the Enablement Team</div>
+        <div style="margin-top:8px;font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--pink)">Apr 29 – May 1</div>
+      </div>
+      <div style="background:var(--s1);border:1px solid rgba(255,45,120,.25);border-radius:12px;padding:16px;">
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--lime);margin-bottom:6px">FINAL DEADLINE</div>
+        <div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:4px">Full Submission</div>
+        <div style="font-size:12px;color:var(--muted)">All deliverables submitted and graded</div>
+        <div style="margin-top:8px;font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--lime)">May 1st 🏁</div>
+      </div>
+    </div>
+
+    <!-- GRADING -->
+    <div style="background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:24px;">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:12px">GRADED BY AI PANEL + TEAM FEEDBACK · WEIGHTED SCORING</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        ${['💡 Idea Originality','🤝 Teamwork','🏢 Business Enablement Suitability','⚙️ Usefulness','✨ Quality of Project'].map(c=>`<span style="background:var(--s2);border:1px solid var(--border);color:var(--text);font-size:12px;font-weight:600;padding:5px 12px;border-radius:100px">${c}</span>`).join('')}
+      </div>
+    </div>
+
+    <!-- INSPIRATION -->
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:14px">💡 INSPIRATION — WHAT COULD YOUR CAPSTONE BE?</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;">
+        ${[
+          {icon:'🔄', title:'AI-Driven Process Flow',    desc:'Map a real team process and rebuild it with AI automation. Show before/after — what used to take hours, now takes minutes.'},
+          {icon:'🛠️', title:'Enablement Extender',       desc:'Build a tool that extends what your team already does — a prompt library, AI-assisted playbook, or smart onboarding guide.'},
+          {icon:'♻️', title:'Content Repurposing Engine', desc:'Take existing content — decks, docs, recordings — and use AI to automatically reformat it into multiple output types.'},
+          {icon:'📚', title:'AI Learning Experience',    desc:'Design a self-serve AI learning journey for teammates who haven\'t started yet. Make it engaging, practical, and reusable.'},
+          {icon:'📋', title:'Project Management AI',     desc:'Build an AI-powered tracker, sprint planner, retro tool, or status reporter your team could actually adopt next quarter.'},
+          {icon:'🌍', title:'Your Own Idea',             desc:'Think bigger. What would genuinely change how your team works? If it uses AI, solves a real problem, and ships — it qualifies.'},
+        ].map(o=>`<div style="background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:18px;">
+          <div style="font-size:24px;margin-bottom:8px">${o.icon}</div>
+          <div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:6px">${o.title}</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.65">${o.desc}</div>
+        </div>`).join('')}
+      </div>
+    </div>
+  </div>`;
+
   root.innerHTML=html;
   updateProgress();
 }
@@ -1327,7 +1536,6 @@ function renderTrackView(){
   TRACKS.forEach((t,ci)=>{
     const chs=CHS.filter(c=>c.cat===ci);
     if(!chs.length)return;
-    const vibeBlock=ci===8?`<div class="vibe-callout"><div class="vibe-callout-icon">💜</div><div class="vibe-callout-body"><strong>Vibe Coding</strong> — <a href="https://lovable.dev" target="_blank">Lovable.dev</a>, <a href="https://base44.com" target="_blank">Base44.com</a>, <a href="https://replit.com" target="_blank">Replit.com</a> — all free. Submit as a live URL.</div></div>`:'';
     html+=`<div style="margin-bottom:44px">
       <div class="track-head" style="border-color:${t.bd}">
         <div class="th-icon">${t.icon}</div>
@@ -1335,7 +1543,6 @@ function renderTrackView(){
         <div class="th-tags">${t.ttags.map(tt).join('')}</div>
         <div class="th-count">${chs.length}</div>
       </div>
-      ${vibeBlock}
       <div class="cgrid">${chs.map(c=>cardHtml(c,t)).join('')}</div>
     </div>`;
   });
@@ -1464,7 +1671,7 @@ function renderLB() {
 
   el.innerHTML = sorted.map((p, rank) => {
     const score   = p.comp*5 + p.qual;
-    const pct     = Math.min(100, Math.round(p.comp/35*100));
+    const pct     = Math.min(100, Math.round(p.comp/22*100));
     const isEd    = editingId === p._orig;
     const rankCls = 'lrx';
     const laneCls = '';
@@ -1492,7 +1699,7 @@ function renderLB() {
         <div class="lane-name"><div>${p.name}</div></div>
         <div style="flex:1;display:flex;gap:8px;align-items:center;padding:0 4px">
           <label style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted)">DONE</label>
-          <input type="number" class="lb-inp-edit" id="edit-comp" value="${p.comp}" min="0" max="35" style="width:58px"/>
+          <input type="number" class="lb-inp-edit" id="edit-comp" value="${p.comp}" min="0" max="22" style="width:58px"/>
           ${isAdmin
             ? `<label style="font-family:'DM Mono',monospace;font-size:9px;color:var(--lime)">QUALITY 🔐</label>
                <input type="number" class="lb-inp-edit" id="edit-qual" value="${p.qual}" min="0" style="width:58px;border-color:rgba(184,255,53,.3)"/>`
@@ -1518,7 +1725,7 @@ function renderLB() {
       ${avatarHtml}
       <div class="lane-name">
         <div>${p.name}</div>
-        <div class="ln-sub">${p.comp}/35 · ${pct}%</div>
+        <div class="ln-sub">${p.comp}/22 · ${pct}%</div>
       </div>
       ${trackHtml}
       <div class="lane-score">
@@ -1537,7 +1744,7 @@ function startEdit(i){ editingId=i; renderLB(); setTimeout(()=>{ const inp=docum
 
 function saveEdit(i){
   const c=document.getElementById('edit-comp');
-  if(c) players[i].comp=Math.min(35,Math.max(0,parseInt(c.value)||0));
+  if(c) players[i].comp=Math.min(22,Math.max(0,parseInt(c.value)||0));
   if(isAdmin){
     const q=document.getElementById('edit-qual');
     if(q) players[i].qual=Math.max(0,parseInt(q.value)||0);
@@ -1548,7 +1755,7 @@ function saveEdit(i){
 
 function addPlayer(){
   const name=document.getElementById('inp-name').value.trim();
-  const comp=Math.min(35,Math.max(0,parseInt(document.getElementById('inp-comp').value)||0));
+  const comp=Math.min(22,Math.max(0,parseInt(document.getElementById('inp-comp').value)||0));
   const qual=isAdmin ? Math.max(0,parseInt(document.getElementById('inp-qual')?.value)||0) : 0;
   if(!name) return;
   if(players.find(p=>p.name.toLowerCase()===name.toLowerCase())){ alert('Racer already on the track!'); return; }
@@ -1577,253 +1784,49 @@ function showPage(id,btn){
 document.addEventListener('DOMContentLoaded',()=>{
   seedDatesFromCalendar();
   buildWeekTabs();
+  // Ensure week view is active by default
+  setView('week');
   render();
-  const today = getAprilDay();
-  if (today >= 1 && today <= 35) {
-    const ch = CHS.find(c => c.day === today);
-    if (ch) {
-      const weekBtn = document.getElementById('wtab-' + ch.week);
-      if (weekBtn) setWeek(ch.week, weekBtn);
-      setTimeout(() => {
-        const el = document.getElementById('card-' + today);
-        if (el) el.scrollIntoView({ behavior:'smooth', block:'center' });
-      }, 400);
-    }
+
+  // Auto-jump to the week that contains today (or the closest upcoming week)
+  const today = todayMidnight();
+
+  // Find which week contains today
+  let targetWeek = null;
+  for (const w of WEEKS) {
+    const wChs = CHS.filter(c => c.week === w.num);
+    if (!wChs.length) continue;
+    const dates = wChs.map(c => { const d = new Date(CHALLENGE_DATES[c.day]); d.setHours(0,0,0,0); return d; });
+    const minD = new Date(Math.min(...dates));
+    const maxD = new Date(Math.max(...dates));
+    if (today >= minD && today <= maxD) { targetWeek = w.num; break; }
+    // If today is before the first challenge, jump to week 1
+    if (today < minD && targetWeek === null) { targetWeek = w.num; break; }
   }
+  // If past all weeks, stay on last week
+  if (targetWeek === null) targetWeek = WEEKS[WEEKS.length-1].num;
+
+  const weekBtn = document.getElementById('wtab-' + targetWeek);
+  if (weekBtn) setWeek(targetWeek, weekBtn);
+
+  // Scroll today's card into view if present
+  const todayCh = CHS.find(c => {
+    const cd = CHALLENGE_DATES[c.day];
+    if (!cd) return false;
+    const cdm = new Date(cd); cdm.setHours(0,0,0,0);
+    return cdm.getTime() === today.getTime();
+  });
+  if (todayCh) {
+    setTimeout(() => {
+      const el = document.getElementById('card-' + todayCh.day);
+      if (el) el.scrollIntoView({ behavior:'smooth', block:'center' });
+    }, 400);
+  }
+
   document.getElementById('inp-name').addEventListener('keydown',e=>{ if(e.key==='Enter') addPlayer(); });
 });
 
-/* ══════════════════════════════════════
-   SYNTHWAVE MUSIC ENGINE — Web Audio API
-   No external files. Pure tone synthesis.
-══════════════════════════════════════ */
-let audioCtx = null, masterGain = null, reverbNode = null;
-let musicPlaying = false, loopTimer = null;
-// We don't need to track nodes anymore — we use onended cleanup instead
 
-function initAudio() {
-  if (audioCtx) return;
-  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-  masterGain = audioCtx.createGain();
-  masterGain.gain.setValueAtTime(0.18, audioCtx.currentTime);
-
-  // Compressor to prevent clipping
-  const comp = audioCtx.createDynamicsCompressor();
-  comp.threshold.value = -18; comp.knee.value = 10;
-  comp.ratio.value = 4; comp.attack.value = 0.005; comp.release.value = 0.1;
-  masterGain.connect(comp);
-  comp.connect(audioCtx.destination);
-
-  // ONE shared reverb node — created once, never recreated
-  const sr = audioCtx.sampleRate;
-  const dur = 1.5, len = sr * dur;
-  const buf = audioCtx.createBuffer(2, len, sr);
-  for (let c = 0; c < 2; c++) {
-    const d = buf.getChannelData(c);
-    for (let i = 0; i < len; i++) d[i] = (Math.random()*2-1) * Math.pow(1-i/len, 2.5);
-  }
-  reverbNode = audioCtx.createConvolver();
-  reverbNode.buffer = buf;
-
-  // Reverb -> small gain -> output (wet/dry mix)
-  const reverbGain = audioCtx.createGain();
-  reverbGain.gain.value = 0.18;
-  reverbNode.connect(reverbGain);
-  reverbGain.connect(comp);
-}
-
-// Play a synth note — feeds into shared reverb, self-cleans via onended
-function playNote(freq, startTime, duration, type='sawtooth', vol=0.12, detune=0) {
-  if (!audioCtx || !musicPlaying) return;
-  const osc  = audioCtx.createOscillator();
-  const gain = audioCtx.createGain();
-
-  osc.type = type;
-  osc.frequency.setValueAtTime(freq, startTime);
-  if (detune) osc.detune.setValueAtTime(detune, startTime);
-
-  const atk = 0.02, rel = Math.min(duration * 0.35, 0.25);
-  gain.gain.setValueAtTime(0.0001, startTime);
-  gain.gain.linearRampToValueAtTime(vol, startTime + atk);
-  gain.gain.setValueAtTime(vol * 0.85, startTime + duration - rel);
-  gain.gain.linearRampToValueAtTime(0.0001, startTime + duration);
-
-  // Dry path
-  osc.connect(gain);
-  gain.connect(masterGain);
-  // Wet path (shared reverb)
-  gain.connect(reverbNode);
-
-  osc.start(startTime);
-  osc.stop(startTime + duration + 0.1);
-  // Self-cleanup — disconnect as soon as the note ends
-  osc.onended = () => { try { osc.disconnect(); gain.disconnect(); } catch(e){} };
-}
-
-function playPad(freqs, startTime, duration, vol=0.055) {
-  freqs.forEach((f, i) => {
-    playNote(f,     startTime, duration, 'sine', vol,       (i-1)*4);
-    playNote(f * 2, startTime, duration, 'sine', vol * 0.3, (i-1)*2);
-  });
-}
-
-function playKick(t) {
-  if (!audioCtx || !musicPlaying) return;
-  const osc = audioCtx.createOscillator();
-  const gain = audioCtx.createGain();
-  osc.frequency.setValueAtTime(160, t);
-  osc.frequency.exponentialRampToValueAtTime(40, t + 0.12);
-  gain.gain.setValueAtTime(0.65, t);
-  gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.22);
-  osc.connect(gain); gain.connect(masterGain);
-  osc.start(t); osc.stop(t + 0.28);
-  osc.onended = () => { try { osc.disconnect(); gain.disconnect(); } catch(e){} };
-}
-
-function playSnare(t) {
-  if (!audioCtx || !musicPlaying) return;
-  const sr = audioCtx.sampleRate;
-  const buf = audioCtx.createBuffer(1, sr * 0.09, sr);
-  const data = buf.getChannelData(0);
-  for (let i = 0; i < data.length; i++) data[i] = Math.random()*2-1;
-  const src = audioCtx.createBufferSource();
-  src.buffer = buf;
-  const gain   = audioCtx.createGain();
-  const filter = audioCtx.createBiquadFilter();
-  filter.type = 'bandpass'; filter.frequency.value = 2200; filter.Q.value = 0.8;
-  gain.gain.setValueAtTime(0.25, t);
-  gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.09);
-  src.connect(filter); filter.connect(gain); gain.connect(masterGain);
-  src.start(t); src.stop(t + 0.1);
-  src.onended = () => { try { src.disconnect(); filter.disconnect(); gain.disconnect(); } catch(e){} };
-}
-
-function playHat(t, vol=0.07) {
-  if (!audioCtx || !musicPlaying) return;
-  const sr = audioCtx.sampleRate;
-  const buf = audioCtx.createBuffer(1, sr * 0.04, sr);
-  const data = buf.getChannelData(0);
-  for (let i = 0; i < data.length; i++) data[i] = Math.random()*2-1;
-  const src    = audioCtx.createBufferSource();
-  src.buffer   = buf;
-  const gain   = audioCtx.createGain();
-  const filter = audioCtx.createBiquadFilter();
-  filter.type = 'highpass'; filter.frequency.value = 8000;
-  gain.gain.setValueAtTime(vol, t);
-  gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.04);
-  src.connect(filter); filter.connect(gain); gain.connect(masterGain);
-  src.start(t); src.stop(t + 0.05);
-  src.onended = () => { try { src.disconnect(); filter.disconnect(); gain.disconnect(); } catch(e){} };
-}
-
-function playBass(freq, t, dur) {
-  playNote(freq,     t, dur, 'square', 0.16);
-  playNote(freq*0.5, t, dur, 'sine',   0.10);
-}
-
-const BPM  = 124;
-const BEAT = 60 / BPM;
-const BAR  = BEAT * 4;
-const LOOP = BAR * 8;
-
-const N = {
-  A2:110,  C3:130.8, D3:146.8, E3:164.8,
-  A3:220,  B3:246.9, C4:261.6, D4:293.7, E4:329.6, G4:392,
-  A4:440,  B4:493.9, C5:523.3, D5:587.3, E5:659.3
-};
-
-function scheduleLoop(startTime) {
-  const t = startTime;
-
-  // ── DRUMS ──
-  for (let bar = 0; bar < 8; bar++) {
-    const b = t + bar * BAR;
-    playKick(b);
-    playSnare(b + BEAT * 2);
-    playKick(b + BEAT * 3);
-    for (let h = 0; h < 8; h++) {
-      playHat(b + h * BEAT * 0.5, h % 2 === 0 ? 0.09 : 0.05);
-    }
-  }
-
-  // ── BASS ──
-  const bassA = [[N.A2,0,BEAT*1.8],[N.A2,BEAT*2,BEAT*0.8],[82.4,BEAT*3,BEAT*0.8],[73.4,BEAT*3.5,BEAT*0.4]];
-  const bassB = [[N.A2,0,BEAT*1.8],[N.C3,BEAT*2,BEAT*1.0],[N.D3,BEAT*3,BEAT*0.8]];
-  for (let rep = 0; rep < 4; rep++) {
-    const off = t + rep * BAR * 2;
-    bassA.forEach(([f,bt,d]) => playBass(f, off+bt, d));
-    bassB.forEach(([f,bt,d]) => playBass(f, off+BAR+bt, d));
-  }
-
-  // ── MELODY ──
-  const mel1 = [
-    [N.A4,0,BEAT*.9],[N.A4,BEAT,BEAT*.4],[N.C5,BEAT*1.5,BEAT*.9],[N.E5,BEAT*2.5,BEAT*.9],[N.D5,BEAT*3.5,BEAT*.4],
-    [N.C5,BAR,BEAT*.9],[N.B4,BAR+BEAT,BEAT*.4],[N.A4,BAR+BEAT*1.5,BEAT*1.4],
-    [N.G4,BAR+BEAT*2.5,BEAT*1.4],
-    [N.A4,BAR*2,BEAT*.9],[N.C5,BAR*2+BEAT,BEAT*.4],[N.D5,BAR*2+BEAT*1.5,BEAT*.9],[N.E5,BAR*2+BEAT*2.5,BEAT*.9],
-    [N.D5,BAR*3,BEAT*1.4],[N.C5,BAR*3+BEAT*2,BEAT*.9],[N.B4,BAR*3+BEAT*3,BEAT*.9],
-  ];
-  const mel2 = [
-    [N.E5,BAR*4,BEAT*.9],[N.D5,BAR*4+BEAT,BEAT*.4],[N.C5,BAR*4+BEAT*1.5,BEAT*.9],[N.A4,BAR*4+BEAT*2.5,BEAT*1.4],
-    [N.B4,BAR*5,BEAT*.9],[N.C5,BAR*5+BEAT,BEAT*.4],[N.D5,BAR*5+BEAT*1.5,BEAT*.9],[N.E5,BAR*5+BEAT*2.5,BEAT*.9],
-    [N.A4,BAR*6,BEAT*1.8],[N.C5,BAR*6+BEAT*2,BEAT*.9],[N.E5,BAR*6+BEAT*3,BEAT*.9],
-    [N.D5,BAR*7,BEAT*.9],[N.E5,BAR*7+BEAT,BEAT*.4],[N.A4,BAR*7+BEAT*1.5,BEAT*1.8],
-  ];
-  mel1.forEach(([f,bt,d]) => playNote(f, t+bt, d, 'sawtooth', 0.08, 5));
-  mel2.forEach(([f,bt,d]) => playNote(f, t+bt, d, 'sawtooth', 0.08, -4));
-
-  // ── CHORD PADS ──
-  [[[ N.A3,N.C4,N.E4],0],[[ N.A3,N.C4,N.E4],BAR*2],
-   [[261.6,329.6,392], BAR*4],[[N.E3||164.8,N.A3,N.C4],BAR*6]]
-    .forEach(([freqs,bt]) => playPad(freqs, t+bt, BAR*2-0.1));
-
-  // ── ARPEGGIO ──
-  const arp = [N.A4,N.E4,N.C4,N.A3,N.C4,N.E4,N.A4,N.C5];
-  [BAR*2, BAR*6].forEach(off => {
-    arp.forEach((f,i) => playNote(f, t+off+i*BEAT*0.5, BEAT*0.4, 'triangle', 0.06));
-    [...arp].reverse().forEach((f,i) => playNote(f, t+off+BAR+i*BEAT*0.5, BEAT*0.4, 'triangle', 0.06));
-  });
-}
-
-function startMusic() {
-  initAudio();
-  if (audioCtx.state === 'suspended') audioCtx.resume();
-  musicPlaying = true;
-  document.getElementById('music-btn').classList.add('playing');
-  document.getElementById('music-label').textContent = 'Vibing ♫';
-
-  function loop() {
-    if (!musicPlaying) return;
-    scheduleLoop(audioCtx.currentTime + 0.05);
-    loopTimer = setTimeout(loop, (LOOP - 0.25) * 1000);
-  }
-  loop();
-}
-
-function stopMusic() {
-  musicPlaying = false;
-  clearTimeout(loopTimer);
-  loopTimer = null;
-  // Fade out smoothly then close the context to release all audio resources
-  if (masterGain) {
-    masterGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.15);
-  }
-  setTimeout(() => {
-    if (audioCtx && audioCtx.state !== 'closed') {
-      audioCtx.close().then(() => {
-        audioCtx = null; masterGain = null; reverbNode = null;
-      });
-    }
-  }, 500);
-  document.getElementById('music-btn').classList.remove('playing');
-  document.getElementById('music-label').textContent = 'Play Vibe';
-}
-
-function toggleMusic() {
-  if (musicPlaying) stopMusic();
-  else startMusic();
-}
 </script>
 </body>
 </html>
