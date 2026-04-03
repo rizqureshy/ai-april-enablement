@@ -32,31 +32,37 @@ function toggleAdmin() {
   }
 }
 
+// Helper to look up photo from PLAYER_PHOTOS by name
+function getPlayerPhoto(name) {
+  const key = name.toLowerCase().replace(/ /g, '_').replace(/'/g, '');
+  return PLAYER_PHOTOS[key] || null;
+}
+
 let players = [
-  {name:'Angel Mazzucco', comp:0, qual:0, photo:'assets/photos/angel_mazzucco.jpg'},
-  {name:'Ashley Mims', comp:0, qual:0, photo:'assets/photos/ashley_mims.jpg'},
-  {name:'Bev Kelly', comp:0, qual:0, photo:'assets/photos/bev_kelly.jpg'},
-  {name:'Calley Hood', comp:2, qual:0, photo:'assets/photos/calley_hood.jpg'},
-  {name:'Dalia Osorio', comp:1, qual:0, photo:'assets/photos/dalia_osorio.jpg'},
-  {name:'Eduardo Chalian', comp:0, qual:0, photo:'assets/photos/eduardo_chalian.jpg'},
-  {name:'Elena Cazan', comp:0, qual:0, photo:'assets/photos/elena_cazan.jpg'},
-  {name:'Eamonn Ward', comp:2, qual:0, photo:'assets/photos/eamonn_ward.jpg'},
-  {name:'Isabelle Puller', comp:0, qual:0, photo:'assets/photos/isabelle_puller.jpg'},
-  {name:'Jason Sherwood', comp:0, qual:0, photo:'assets/photos/jason_sherwood.jpg'},
-  {name:'Jenella Jimlani', comp:0, qual:0, photo:'assets/photos/jenella_jimlani.jpg'},
-  {name:'Joseph Chan', comp:2, qual:0, photo:'assets/photos/joseph_chan.jpg'},
-  {name:'Joy Parrish', comp:0, qual:0, photo:'assets/photos/joy_parrish.jpg'},
-  {name:'Justin Sit', comp:1, qual:0, photo:'assets/photos/justin_sit.jpg'},
-  {name:'Kelly Grover', comp:1, qual:0, photo:'assets/photos/kelly_grover.jpg'},
-  {name:'Kim Graham', comp:0, qual:0, photo:'assets/photos/kim_graham.jpg'},
-  {name:'Lorna Joiner', comp:2, qual:0, photo:'assets/photos/lorna_joiner.jpg'},
-  {name:'Michael Bourgeois', comp:1, qual:0, photo:'assets/photos/michael_bourgeois.jpg'},
-  {name:'Morgan Gallegos', comp:0, qual:0, photo:'assets/photos/morgan_gallegos.jpg'},
-  {name:'Paige Gregory', comp:1, qual:0, photo:'assets/photos/paige_gregory.jpg'},
-  {name:'Rizwan Qureshy', comp:2, qual:0, photo:'assets/photos/rizwan_qureshy.jpg'},
-  {name:'Shiran Nizam', comp:0, qual:0, photo:'assets/photos/shiran_nizam.jpg'},
-  {name:'Sol Helou', comp:1, qual:0, photo:'assets/photos/sol_helou.jpg'},
-  {name:'Veronica John', comp:2, qual:0, photo:'assets/photos/veronica_john.jpg'},
+  {name:'Angel Mazzucco', comp:0, qual:0},
+  {name:'Ashley Mims', comp:0, qual:0},
+  {name:'Bev Kelly', comp:0, qual:0},
+  {name:'Calley Hood', comp:2, qual:0},
+  {name:'Dalia Osorio', comp:1, qual:0},
+  {name:'Eduardo Chalian', comp:0, qual:0},
+  {name:'Elena Cazan', comp:0, qual:0},
+  {name:'Eamonn Ward', comp:2, qual:0},
+  {name:'Isabelle Puller', comp:0, qual:0},
+  {name:'Jason Sherwood', comp:0, qual:0},
+  {name:'Jenella Jimlani', comp:0, qual:0},
+  {name:'Joseph Chan', comp:2, qual:0},
+  {name:'Joy Parrish', comp:0, qual:0},
+  {name:'Justin Sit', comp:1, qual:0},
+  {name:'Kelly Grover', comp:1, qual:0},
+  {name:'Kim Graham', comp:0, qual:0},
+  {name:'Lorna Joiner', comp:2, qual:0},
+  {name:'Michael Bourgeois', comp:1, qual:0},
+  {name:'Morgan Gallegos', comp:0, qual:0},
+  {name:'Paige Gregory', comp:1, qual:0},
+  {name:'Rizwan Qureshy', comp:2, qual:0},
+  {name:'Shiran Nizam', comp:0, qual:0},
+  {name:'Sol Helou', comp:1, qual:0},
+  {name:'Veronica John', comp:2, qual:0},
 ];
 let editingId = null;
 
@@ -139,8 +145,9 @@ function renderLB() {
 
     // Avatar — photo if available, else initials
     const initials = p.name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
-    const avatarHtml = p.photo
-      ? `<div class="lane-avatar"><img src="${p.photo}" alt="${p.name}"/></div>`
+    const photo = getPlayerPhoto(p.name);
+    const avatarHtml = photo
+      ? `<div class="lane-avatar"><img src="${photo}" alt="${p.name}"/></div>`
       : `<div class="lane-avatar">${initials}</div>`;
 
     return `<div class="lane${laneCls}" id="lane-${p._orig}">
