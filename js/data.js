@@ -35,8 +35,8 @@ const CHS=[
    desc:'Generate yourself in 3 wildly different art styles using Copilot Designer: watercolour, cyberpunk neon, and Renaissance oil painting. Same description, only the style tag changes.',
    tools:['cop']},
   {day:3,  week:1, dow:3, cat:1, emoji:'\ud83d\udcca', diff:3, title:'AI Strategy Deck',
-   desc:'FRIDAY CHALLENGE \u2605 Build a 6-slide \u201cAI in Our Team\u201d strategy deck using Copilot in PowerPoint. Must include: Current State, AI Opportunity, 3 Recommended Tools with use cases, Implementation Roadmap, Risks & Mitigations, and Success Metrics. Use Copilot to write every slide, then add speaker notes. Share the final deck.',
-   tools:['cop','gpt'], mandatory:true},
+   desc:'FRIDAY CHALLENGE \u2605 Use any AI tool \u2014 Copilot, ChatGPT, Claude, Gamma, Canva AI, Gemini, or anything else \u2014 to turn your own AI strategy or vision into a polished presentation deck. Let AI do the heavy lifting: writing, editing, and polishing. Your job is to guide it, not write it. (1) Pick your AI tool and use it to build and shape your slides. (2) Your deck must cover: Current State \u2192 AI Opportunity \u2192 3 Tools + Use Cases \u2192 Implementation Roadmap \u2192 Risks & Mitigations \u2192 Success Metrics. (3) Add speaker notes to every slide in your own words \u2014 this is where your thinking shows. (4) Submit your deck along with one sentence naming the tool you used and why you picked it.',
+   tools:['cop','gpt','cla','gem'], mandatory:true},
 
   // WEEK 2: Apr 6 (Mon) to Apr 10 (Fri mandatory)
   {day:4,  week:2, dow:1, cat:0, emoji:'\ud83c\udfad', diff:1, title:'Tone Tornado',
