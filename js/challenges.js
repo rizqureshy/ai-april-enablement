@@ -54,22 +54,55 @@ function cardHtml(c,t){
        </div>`
     : `<div class="c-chip" style="color:${isMand?'var(--pink)':''+t.color};border-color:${isMand?'rgba(255,45,120,.3)':t.bd};background:${isMand?'rgba(255,45,120,.08)':t.bg}">${isMand?'\ud83d\udd34':''}${dowLabel}</div>`;
 
-  return`<div class="${cls}" id="card-${c.day}">
-    <div class="cbar" style="background:${isToday?'var(--lime)':isMand?'var(--pink)':t.color}"></div>
-    <div class="cghost">${c.day}</div>
-    <div class="c-top">
-      ${chipContent}
-      <div class="c-right">
-        ${isDone ? '<div class="ck-done">\u2713</div>' : ''}
-        ${isMand ? '<span class="mandatory-badge">Mandatory</span>' : '<span class="optional-badge">Optional</span>'}
+  const backDetails = c.details || '';
+  const deadlineHtml = isMand
+    ? `<span class="cb-label">SUBMISSION DEADLINE</span>
+       <div class="cb-highlight pink">\ud83d\udcc5 ${backDetails}</div>`
+    : `<span class="cb-label">TIPS</span>
+       <div style="margin-top:4px">${backDetails}</div>`;
+
+  return`<div class="card-flip" id="card-${c.day}" onclick="this.classList.toggle('flipped')">
+    <div class="card-flip-inner">
+      <div class="card-front">
+        <div class="${cls}">
+          <div class="cbar" style="background:${isToday?'var(--lime)':isMand?'var(--pink)':t.color}"></div>
+          <div class="cghost">${c.day}</div>
+          <div class="c-top">
+            ${chipContent}
+            <div class="c-right">
+              ${isDone ? '<div class="ck-done">\u2713</div>' : ''}
+              ${isMand ? '<span class="mandatory-badge">Mandatory</span>' : '<span class="optional-badge">Optional</span>'}
+            </div>
+          </div>
+          <span class="c-emoji">${c.emoji}</span>
+          <div class="c-title">${c.title}</div>
+          <div class="c-desc">${c.desc}</div>
+          <div class="c-foot">
+            <div class="ttags">${c.tools.map(tt).join('')}</div>
+            ${diffs(c.diff)}
+          </div>
+          <div class="flip-hint">\u21bb Click for details</div>
+        </div>
       </div>
-    </div>
-    <span class="c-emoji">${c.emoji}</span>
-    <div class="c-title">${c.title}</div>
-    <div class="c-desc">${c.desc}</div>
-    <div class="c-foot">
-      <div class="ttags">${c.tools.map(tt).join('')}</div>
-      ${diffs(c.diff)}
+      <div class="card-back">
+        <div class="${cls}">
+          <div class="cbar" style="background:${isToday?'var(--lime)':isMand?'var(--pink)':t.color}"></div>
+          <div class="card-back-header">
+            <div class="card-back-title">${c.emoji} ${c.title}</div>
+            <div class="card-back-close">\u21bb Flip back</div>
+          </div>
+          <div class="card-back-body">
+            ${deadlineHtml}
+            <span class="cb-label">TOOLS</span>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:4px">${c.tools.map(tt).join('')}</div>
+            <span class="cb-label">DIFFICULTY</span>
+            <div style="margin-top:4px">${diffs(c.diff)}</div>
+            ${isMand ? '<span class="cb-label">GRADING</span><div style="margin-top:4px">Graded by Eamonn on quality, creativity & execution. Results posted the day after the deadline.</div>' : ''}
+            <span class="cb-label">SUBMIT TO</span>
+            <div class="cb-highlight">#ai-april in Microsoft Teams</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>`;
 }
