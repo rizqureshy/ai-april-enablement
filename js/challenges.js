@@ -50,9 +50,9 @@ function cardHtml(c,t){
   const chipContent = isToday
     ? `<div style="display:flex;align-items:center;gap:7px;">
         <div class="c-chip" style="color:${t.color};border-color:${t.bd};background:${t.bg}">${t.icon} ${dowLabel}</div>
-        <span class="today-badge">🔥 Today</span>
+        <span class="today-badge">\ud83d\udd25 Today</span>
        </div>`
-    : `<div class="c-chip" style="color:${isMand?'var(--pink)':''+t.color};border-color:${isMand?'rgba(255,45,120,.3)':t.bd};background:${isMand?'rgba(255,45,120,.08)':t.bg}">${isMand?'🔴':''}${dowLabel}</div>`;
+    : `<div class="c-chip" style="color:${isMand?'var(--pink)':''+t.color};border-color:${isMand?'rgba(255,45,120,.3)':t.bd};background:${isMand?'rgba(255,45,120,.08)':t.bg}">${isMand?'\ud83d\udd34':''}${dowLabel}</div>`;
 
   return`<div class="${cls}" id="card-${c.day}">
     <div class="cbar" style="background:${isToday?'var(--lime)':isMand?'var(--pink)':t.color}"></div>
@@ -60,7 +60,7 @@ function cardHtml(c,t){
     <div class="c-top">
       ${chipContent}
       <div class="c-right">
-        ${isDone ? '<div class="ck-done">✓</div>' : ''}
+        ${isDone ? '<div class="ck-done">\u2713</div>' : ''}
         ${isMand ? '<span class="mandatory-badge">Mandatory</span>' : '<span class="optional-badge">Optional</span>'}
       </div>
     </div>
@@ -85,7 +85,7 @@ function renderWeekView(){
     const mandDone=chs.filter(c=>c.mandatory&&done.has(c.day)).length;
     const hasFri=chs.find(c=>c.dow===5);
 
-    // DOW header — W1=3 days (Wed/Thu/Fri), W5=4 days (Mon-Thu), others=5 (Mon-Fri)
+    // DOW header \u2014 W1=3 days (Wed/Thu/Fri), W5=4 days (Mon-Thu), others=5 (Mon-Fri)
     const dowLabels  = w.num === 1 ? DOW_WEEK1 : w.num === 5 ? ['MON','TUE','WED','THU'] : DOW_FULL;
     const gridCols   = w.num === 1 ? 3 : w.num === 5 ? 4 : 5;
     const dowHeaders = dowLabels.map((d,i) => {
@@ -102,7 +102,7 @@ function renderWeekView(){
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;flex-shrink:0">
           <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)">${doneCount}/${chs.length} done</span>
-          ${mandDone>0?`<span class="mandatory-badge">Friday ✓</span>`:hasFri?`<span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--pink)">Friday pending</span>`:''}
+          ${mandDone>0?`<span class="mandatory-badge">Friday \u2713</span>`:hasFri?`<span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--pink)">Friday pending</span>`:''}
         </div>
       </div>
       <div class="dow-row" style="grid-template-columns:repeat(${gridCols},1fr)">${dowHeaders}</div>
@@ -112,7 +112,7 @@ function renderWeekView(){
     </div>`;
   });
 
-  // Capstone / Cert section — always shown at bottom
+  // Capstone / Cert section \u2014 always shown at bottom
   html+=`<div class="capstone-section">
     <!-- SECTION HEADER -->
     <div style="text-align:center;margin-bottom:28px;">
@@ -130,25 +130,25 @@ function renderWeekView(){
         <!-- Option badge -->
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
           <span style="font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:3px;background:rgba(255,45,120,.15);border:1px solid rgba(255,45,120,.35);color:var(--pink);padding:4px 12px;border-radius:100px;">OPTION A</span>
-          <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted)">TEAM · GRADED</span>
+          <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted)">TEAM \u00b7 GRADED</span>
         </div>
-        <div style="font-size:28px;margin-bottom:8px">🏆</div>
+        <div style="font-size:28px;margin-bottom:8px">\ud83c\udfc6</div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1px;color:var(--pink);margin-bottom:4px">CAPSTONE PROJECT</div>
         <div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:18px">Build something real with your team. Design and deliver a complete AI-powered solution for a genuine business problem. Graded live by an AI Panel and team feedback.</div>
 
         <!-- Points badge -->
         <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,45,120,.12);border:1px solid rgba(255,45,120,.3);border-radius:100px;padding:6px 16px;margin-bottom:18px;">
           <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--pink)">50</span>
-          <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--muted)">POINTS · GRADED</span>
+          <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--muted)">POINTS \u00b7 GRADED</span>
         </div>
 
         <!-- Steps -->
         <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px;">
           ${[
-            {n:'01', title:'Ideation', desc:'Find a real workflow AI can improve. Form team of 3–4.', date:'Apr 1–7'},
+            {n:'01', title:'Ideation', desc:'Find a real workflow AI can improve. Form team of 3\u20134.', date:'Apr 1\u20137'},
             {n:'02', title:'Pitch',    desc:'15 min with Eamonn. Approval required before building.', date:'Apr 8/9/10'},
-            {n:'03', title:'Build',    desc:'18 days to build your approved idea using AI tools.', date:'Apr 11–28'},
-            {n:'04', title:'Showcase', desc:'Present to the full team. 15–20 min per group.', date:'Apr 29 & 30'},
+            {n:'03', title:'Build',    desc:'18 days to build your approved idea using AI tools.', date:'Apr 11\u201328'},
+            {n:'04', title:'Showcase', desc:'Present to the full team. 15\u201320 min per group.', date:'Apr 29 & 30'},
           ].map(s=>\`<div style="display:flex;gap:12px;align-items:flex-start;background:rgba(255,45,120,.06);border:1px solid rgba(255,45,120,.15);border-radius:10px;padding:10px 14px;">
             <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--pink);flex-shrink:0;min-width:20px">\${s.n}</div>
             <div style="flex:1;">
@@ -163,12 +163,12 @@ function renderWeekView(){
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;">
           <div style="background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:12px;">
             <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:6px">PLATFORM</div>
-            <div style="font-size:11px;color:var(--text);line-height:1.6">Base44 · Lovable · Replit · Claude.ai<br><span style="color:var(--muted)">One shared team account</span></div>
+            <div style="font-size:11px;color:var(--text);line-height:1.6">Base44 \u00b7 Lovable \u00b7 Replit \u00b7 Claude.ai<br><span style="color:var(--muted)">One shared team account</span></div>
           </div>
           <div style="background:var(--s1);border:1px solid rgba(184,255,53,.2);border-radius:10px;padding:12px;">
             <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--lime);margin-bottom:6px">BUDGET</div>
             <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--lime);line-height:1">$100</div>
-            <div style="font-size:10px;color:var(--muted)">per team · plan well</div>
+            <div style="font-size:10px;color:var(--muted)">per team \u00b7 plan well</div>
           </div>
         </div>
 
@@ -176,7 +176,7 @@ function renderWeekView(){
         <div style="background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:12px;">
           <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:8px">WEIGHTED GRADING CRITERIA</div>
           <div style="display:flex;flex-wrap:wrap;gap:6px;">
-            ${['💡 Originality','🤝 Teamwork','🏢 Business Value','⚙️ Usefulness','✨ Quality'].map(c=>\`<span style="background:rgba(255,45,120,.08);border:1px solid rgba(255,45,120,.2);color:var(--text);font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px">\${c}</span>\`).join('')}
+            ${['\ud83d\udca1 Originality','\ud83e\udd1d Teamwork','\ud83c\udfe2 Business Value','\u2699\ufe0f Usefulness','\u2728 Quality'].map(c=>\`<span style="background:rgba(255,45,120,.08);border:1px solid rgba(255,45,120,.2);color:var(--text);font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px">\${c}</span>\`).join('')}
           </div>
         </div>
       </div>
@@ -187,16 +187,16 @@ function renderWeekView(){
         <!-- Option badge -->
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
           <span style="font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:3px;background:rgba(91,127,255,.15);border:1px solid rgba(91,127,255,.35);color:var(--gem);padding:4px 12px;border-radius:100px;">OPTION B</span>
-          <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted)">INDIVIDUAL · NO GROUP PTS</span>
+          <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted)">INDIVIDUAL \u00b7 NO GROUP PTS</span>
         </div>
-        <div style="font-size:28px;margin-bottom:8px">🎓</div>
+        <div style="font-size:28px;margin-bottom:8px">\ud83c\udf93</div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1px;color:var(--gem);margin-bottom:4px">AI CERTIFICATION</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:18px">Earn a recognised AI certification. Equivalent to Capstone — your personal AI investment. Individual path with no group competition points.</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:18px">Earn a recognised AI certification. Equivalent to Capstone \u2014 your personal AI investment. Individual path with no group competition points.</div>
 
         <!-- Equivalent badge -->
         <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(91,127,255,.12);border:1px solid rgba(91,127,255,.3);border-radius:100px;padding:6px 16px;margin-bottom:18px;">
           <span style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--gem)">EQUIVALENT</span>
-          <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--muted)">TO CAPSTONE · INDIVIDUAL</span>
+          <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--muted)">TO CAPSTONE \u00b7 INDIVIDUAL</span>
         </div>
 
         <!-- How it works -->
@@ -219,11 +219,11 @@ function renderWeekView(){
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;">
           <div style="background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:12px;">
             <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:6px">RECOMMENDED PROVIDERS</div>
-            <div style="font-size:11px;color:var(--text);line-height:1.8">Microsoft · AWS<br>NVIDIA · IBM<br>Google</div>
+            <div style="font-size:11px;color:var(--text);line-height:1.8">Microsoft \u00b7 AWS<br>NVIDIA \u00b7 IBM<br>Google</div>
           </div>
           <div style="background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:12px;">
             <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:6px">RECOMMENDED PLATFORMS</div>
-            <div style="font-size:11px;color:var(--text);line-height:1.8">LinkedIn Learning<br>Coursera · Udemy<br>DeepLearning.AI</div>
+            <div style="font-size:11px;color:var(--text);line-height:1.8">LinkedIn Learning<br>Coursera \u00b7 Udemy<br>DeepLearning.AI</div>
           </div>
         </div>
 
@@ -242,7 +242,7 @@ function renderWeekView(){
         <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:var(--text)">DECLARE YOUR PATH</div>
         <div style="font-size:12px;color:var(--muted)">Post your choice (Capstone or Cert) in <strong style="color:var(--text)">#ai-april</strong> in Microsoft Teams</div>
       </div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--lime)">By April 10th 🎯</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--lime)">By April 10th \ud83c\udfaf</div>
     </div>
   </div>`;
 
