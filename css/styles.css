@@ -168,19 +168,20 @@ nav button.active { color:var(--lime); background:rgba(184,255,53,.1); }
 }
 .hmt-ai {
   display:block;
-  background:linear-gradient(135deg, #00cfff 0%, #0088ff 60%, #00cfff 100%);
+  background:linear-gradient(135deg, var(--lime) 0%, #78d600 60%, #4ade80 100%);
   -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  filter:drop-shadow(0 0 30px rgba(0,207,255,.5));
+  filter:drop-shadow(0 0 30px rgba(184,255,53,.35));
   animation:titleshine 3s ease-in-out infinite;
 }
 @keyframes titleshine {
-  0%,100% { filter:drop-shadow(0 0 30px rgba(0,207,255,.5)); }
-  50%      { filter:drop-shadow(0 0 50px rgba(0,207,255,.7)); }
+  0%,100% { filter:drop-shadow(0 0 30px rgba(184,255,53,.35)); }
+  50%      { filter:drop-shadow(0 0 50px rgba(184,255,53,.6)); }
 }
 .hmt-april {
   display:block;
-  color:transparent;
-  -webkit-text-stroke:2px rgba(255,255,255,0.15);
+  background:linear-gradient(135deg, #00cfff 0%, #0088ff 60%, #00cfff 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 30px rgba(0,207,255,.5));
 }
 .hmt-challenge {
   display:block;
