@@ -149,14 +149,14 @@ function renderWeekView(){
             {n:'02', title:'Pitch',    desc:'15 min with Eamonn. Approval required before building.', date:'Apr 8/9/10'},
             {n:'03', title:'Build',    desc:'18 days to build your approved idea using AI tools.', date:'Apr 11\u201328'},
             {n:'04', title:'Showcase', desc:'Present to the full team. 15\u201320 min per group.', date:'Apr 29 & 30'},
-          ].map(s=>\`<div style="display:flex;gap:12px;align-items:flex-start;background:rgba(255,45,120,.06);border:1px solid rgba(255,45,120,.15);border-radius:10px;padding:10px 14px;">
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--pink);flex-shrink:0;min-width:20px">\${s.n}</div>
+          ].map(s=>`<div style="display:flex;gap:12px;align-items:flex-start;background:rgba(255,45,120,.06);border:1px solid rgba(255,45,120,.15);border-radius:10px;padding:10px 14px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--pink);flex-shrink:0;min-width:20px">${s.n}</div>
             <div style="flex:1;">
-              <div style="font-size:12px;font-weight:800;color:var(--text);margin-bottom:2px">\${s.title}</div>
-              <div style="font-size:11px;color:var(--muted);line-height:1.5">\${s.desc}</div>
+              <div style="font-size:12px;font-weight:800;color:var(--text);margin-bottom:2px">${s.title}</div>
+              <div style="font-size:11px;color:var(--muted);line-height:1.5">${s.desc}</div>
             </div>
-            <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--pink);flex-shrink:0;white-space:nowrap">\${s.date}</div>
-          </div>\`).join('')}
+            <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--pink);flex-shrink:0;white-space:nowrap">${s.date}</div>
+          </div>`).join('')}
         </div>
 
         <!-- Platform & Budget -->
@@ -176,7 +176,7 @@ function renderWeekView(){
         <div style="background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:12px;">
           <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:8px">WEIGHTED GRADING CRITERIA</div>
           <div style="display:flex;flex-wrap:wrap;gap:6px;">
-            ${['\ud83d\udca1 Originality','\ud83e\udd1d Teamwork','\ud83c\udfe2 Business Value','\u2699\ufe0f Usefulness','\u2728 Quality'].map(c=>\`<span style="background:rgba(255,45,120,.08);border:1px solid rgba(255,45,120,.2);color:var(--text);font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px">\${c}</span>\`).join('')}
+            ${['\ud83d\udca1 Originality','\ud83e\udd1d Teamwork','\ud83c\udfe2 Business Value','\u2699\ufe0f Usefulness','\u2728 Quality'].map(c=>`<span style="background:rgba(255,45,120,.08);border:1px solid rgba(255,45,120,.2);color:var(--text);font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px">${c}</span>`).join('')}
           </div>
         </div>
       </div>
@@ -206,13 +206,13 @@ function renderWeekView(){
             {n:'02', title:'Get Sign-off', desc:'If role-aligned, discuss with your manager and get approval first.'},
             {n:'03', title:'Complete', desc:'Aim to finish by May 1st. Agree a timeline with manager if needed.'},
             {n:'04', title:'Submit',   desc:'Post proof of completion in #ai-april Teams channel.'},
-          ].map(s=>\`<div style="display:flex;gap:12px;align-items:flex-start;background:rgba(91,127,255,.06);border:1px solid rgba(91,127,255,.15);border-radius:10px;padding:10px 14px;">
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--gem);flex-shrink:0;min-width:20px">\${s.n}</div>
+          ].map(s=>`<div style="display:flex;gap:12px;align-items:flex-start;background:rgba(91,127,255,.06);border:1px solid rgba(91,127,255,.15);border-radius:10px;padding:10px 14px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--gem);flex-shrink:0;min-width:20px">${s.n}</div>
             <div style="flex:1;">
-              <div style="font-size:12px;font-weight:800;color:var(--text);margin-bottom:2px">\${s.title}</div>
-              <div style="font-size:11px;color:var(--muted);line-height:1.5">\${s.desc}</div>
+              <div style="font-size:12px;font-weight:800;color:var(--text);margin-bottom:2px">${s.title}</div>
+              <div style="font-size:11px;color:var(--muted);line-height:1.5">${s.desc}</div>
             </div>
-          </div>\`).join('')}
+          </div>`).join('')}
         </div>
 
         <!-- Providers & Platforms -->
