@@ -329,8 +329,11 @@ function closeFridayWinner(){
   overlay.style.display='none';
   overlay.style.pointerEvents='none';
 }
+// ★ FRIDAY WINNER SPLASH — set to true to enable, false to disable ★
+var FW_ENABLED = false;
+
 // Auto-splash Friday Winner on page load with 2 second delay
-setTimeout(showFridayWinner, 2000);
+if(FW_ENABLED) setTimeout(showFridayWinner, 2000);
 </script>
 </body>
 </html>
