@@ -310,7 +310,8 @@ function showFridayWinner(){
       var origClose=iframeWin.fwClose;
       iframeWin.fwClose=function(){
         if(typeof origClose==='function') origClose();
-        closeFridayWinner();
+        // Wait for the iframe's close animation to finish (~1.2s) before removing overlay
+        setTimeout(closeFridayWinner, 1200);
       };
       // Also close overlay if user clicks the iframe background after splash ends
       iframeWin.document.addEventListener('click', function(e){
