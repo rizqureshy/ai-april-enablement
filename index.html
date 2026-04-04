@@ -273,9 +273,10 @@
 </div>
 
 <!-- FRIDAY WINNER OVERLAY -->
-<div id="fw-overlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.85);">
-  <iframe id="fw-iframe" src="" style="width:100%;height:100%;border:none;"></iframe>
-  <button onclick="closeFridayWinner()" style="position:fixed;top:16px;right:20px;z-index:10000;background:var(--s2);border:1px solid var(--border2);color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;padding:8px 18px;border-radius:100px;cursor:pointer;">✕ Close</button>
+<div id="fw-overlay" style="display:none;position:fixed;inset:0;z-index:9999;">
+  <div style="position:absolute;inset:0;background:rgba(0,0,0,.85);" onclick="closeFridayWinner()"></div>
+  <iframe id="fw-iframe" src="" style="position:absolute;inset:0;width:100%;height:100%;border:none;pointer-events:auto;z-index:1;"></iframe>
+  <button onclick="closeFridayWinner()" style="position:fixed;top:16px;right:20px;z-index:10002;background:rgba(6,6,18,.95);border:2px solid rgba(255,255,255,.3);color:#fff;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;padding:10px 22px;border-radius:100px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.8);pointer-events:auto;">✕ Close</button>
 </div>
 
 <script src="js/data.js"></script>
@@ -293,8 +294,9 @@ function showFridayWinner(){
 function closeFridayWinner(){
   var overlay=document.getElementById('fw-overlay');
   var iframe=document.getElementById('fw-iframe');
+  iframe.src='about:blank';
   overlay.style.display='none';
-  iframe.src='';
+  overlay.style.pointerEvents='none';
 }
 // Auto-splash Friday Winner on page load with 2 second delay
 setTimeout(showFridayWinner, 2000);
