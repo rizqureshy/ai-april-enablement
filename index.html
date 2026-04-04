@@ -295,16 +295,26 @@ function showFridayWinner(){
   // Listen for the iframe's internal close (fwClose) to auto-dismiss overlay
   iframe.onload=function(){
     try {
-      var iframeDoc=iframe.contentWindow||iframe.contentDocument;
+      var iframeWin=iframe.contentWindow||iframe.contentDocument;
+      // Inject winner's photo from PLAYER_PHOTOS into the iframe
+      var winnerName=iframeWin.FW_CONFIG&&iframeWin.FW_CONFIG.WINNER;
+      if(winnerName && typeof PLAYER_PHOTOS!=='undefined'){
+        var photoKey=winnerName.toLowerCase().replace(/ /g,'_').replace(/'/g,'');
+        var photoSrc=PLAYER_PHOTOS[photoKey];
+        if(photoSrc){
+          var heroImg=iframeWin.document.getElementById('fw-hero-img');
+          if(heroImg) heroImg.src=photoSrc;
+        }
+      }
       // Override the iframe's fwClose to also close our overlay
-      var origClose=iframeDoc.fwClose;
-      iframeDoc.fwClose=function(){
+      var origClose=iframeWin.fwClose;
+      iframeWin.fwClose=function(){
         if(typeof origClose==='function') origClose();
         closeFridayWinner();
       };
       // Also close overlay if user clicks the iframe background after splash ends
-      iframeDoc.document.addEventListener('click', function(e){
-        var root=iframeDoc.document.getElementById('fw-root');
+      iframeWin.document.addEventListener('click', function(e){
+        var root=iframeWin.document.getElementById('fw-root');
         if(root && root.style.display==='none') closeFridayWinner();
       });
     } catch(e){}
