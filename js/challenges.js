@@ -277,6 +277,19 @@ function renderWeekView(){
       </div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--lime)">By April 10th \ud83c\udfaf</div>
     </div>
+
+    <!-- NEED HELP BANNER -->
+    <div style="background:linear-gradient(135deg,rgba(184,255,53,.06),rgba(0,207,255,.04));border:2px solid rgba(184,255,53,.2);border-radius:14px;padding:20px 24px;margin-top:16px;text-align:center;">
+      <div style="font-size:22px;margin-bottom:8px">\ud83d\udcac</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:var(--text);margin-bottom:6px">NOT SURE WHICH PATH? WE\u2019RE HERE TO HELP.</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.8;max-width:620px;margin:0 auto;">
+        Whether you want to brainstorm Capstone ideas, explore certification options, or just talk through what makes sense for you \u2014 reach out to
+        <strong style="color:var(--lime)">Eamonn</strong>,
+        <strong style="color:var(--lime)">Kelly</strong>, or
+        <strong style="color:var(--lime)">Rizwan</strong>.
+        No question is too small. We\u2019d love to help you find the right fit.
+      </div>
+    </div>
   </div>`;
 
   root.innerHTML=html;
