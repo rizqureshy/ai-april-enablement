@@ -40,7 +40,7 @@ function getPlayerPhoto(name) {
 
 let players = [
   {name:'Angel Mazzucco', comp:0, qual:0},
-  {name:'Ashley Mims', comp:0, qual:0},
+  {name:'Ashley Mims', comp:1, qual:0},
   {name:'Bev Kelly', comp:0, qual:0},
   {name:'Calley Hood', comp:4, qual:0},
   {name:'Dalia Osorio', comp:1, qual:0},
