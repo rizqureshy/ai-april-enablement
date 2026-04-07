@@ -84,14 +84,13 @@ function renderLB() {
     .map((p,i) => ({...p, _orig:i}))
     .sort((a,b) => (b.comp*5+b.qual) - (a.comp*5+a.qual));
 
-  // Assign true rank — tied players get the same rank number
-  let trueRank = 0;
+  // Assign dense rank — tied players share rank, next rank increments by 1
   sorted.forEach((p, i) => {
-    if (i === 0) { p._rank = 1; trueRank = 1; }
+    if (i === 0) { p._rank = 1; }
     else {
       const prevScore = sorted[i-1].comp*5 + sorted[i-1].qual;
       const thisScore = p.comp*5 + p.qual;
-      p._rank = (thisScore === prevScore) ? sorted[i-1]._rank : i + 1;
+      p._rank = (thisScore === prevScore) ? sorted[i-1]._rank : sorted[i-1]._rank + 1;
     }
   });
 
