@@ -59,7 +59,7 @@ let players = [
   {name:'Michael Bourgeois', comp:3, qual:0},
   {name:'Morgan Gallegos', comp:1, qual:0},
   {name:'Paige Gregory', comp:3, qual:0},
-  {name:'Rizwan Qureshy', comp:4, qual:0},
+  {name:'Rizwan Qureshy', comp:5, qual:0},
   {name:'Shiran Nizam', comp:0, qual:0},
   {name:'Sol Helou', comp:1, qual:0},
   {name:'Veronica John', comp:2, qual:0},
