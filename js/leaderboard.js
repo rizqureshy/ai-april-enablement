@@ -55,7 +55,7 @@ let players = [
   {name:'Justin Sit', comp:2, qual:0},
   {name:'Kelly Grover', comp:2, qual:0},
   {name:'Kim Graham', comp:0, qual:0},
-  {name:'Lorna Joiner', comp:7, qual:0},
+  {name:'Lorna Joiner', comp:6, qual:0},
   {name:'Michael Bourgeois', comp:4, qual:0},
   {name:'Morgan Gallegos', comp:1, qual:0},
   {name:'Paige Gregory', comp:3, qual:0},
