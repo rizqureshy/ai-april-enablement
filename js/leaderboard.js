@@ -40,14 +40,14 @@ function getPlayerPhoto(name) {
 
 let players = [
   {name:'Angel Mazzucco', comp:0, qual:0},
-  {name:'Ashley Mims', comp:1, qual:0},
+  {name:'Ashley Mims', comp:2, qual:0},
   {name:'Bev Kelly', comp:0, qual:0},
-  {name:'Calley Hood', comp:9, qual:0},
+  {name:'Calley Hood', comp:10, qual:0},
   {name:'Dalia Osorio', comp:1, qual:0},
   {name:'Eduardo Chalian', comp:0, qual:0},
   {name:'Elena Cazan', comp:4, qual:0},
   {name:'Eamonn Ward', comp:4, qual:0},
-  {name:'Isabelle Puller', comp:2, qual:0},
+  {name:'Isabelle Puller', comp:4, qual:0},
   {name:'Jason Sherwood', comp:2, qual:0},
   {name:'Jenella Jimlani', comp:0, qual:0},
   {name:'Joseph Chan', comp:4, qual:0},
@@ -55,14 +55,14 @@ let players = [
   {name:'Justin Sit', comp:2, qual:0},
   {name:'Kelly Grover', comp:2, qual:0},
   {name:'Kim Graham', comp:2, qual:0},
-  {name:'Lorna Joiner', comp:6, qual:0},
+  {name:'Lorna Joiner', comp:7, qual:0},
   {name:'Michael Bourgeois', comp:5, qual:0},
   {name:'Morgan Gallegos', comp:1, qual:0},
   {name:'Paige Gregory', comp:3, qual:0},
   {name:'Rizwan Qureshy', comp:6, qual:0},
   {name:'Shiran Nizam', comp:1, qual:0},
   {name:'Sol Helou', comp:2, qual:0},
-  {name:'Veronica John', comp:2, qual:0},
+  {name:'Veronica John', comp:4, qual:0},
 ];
 let editingId = null;
 
