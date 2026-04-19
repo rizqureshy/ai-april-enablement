@@ -88,11 +88,11 @@ const CHS=[
   // WEEK 4: Apr 22 (Tue) to Apr 25 (Fri mandatory) \u2014 Host it, show it, own it.
   {day:14, week:4, dow:1, cat:0, emoji:'\ud83d\udcfa', diff:1, title:'Learn GitHub',
    desc:'Before you can ship your work to the world, you need to understand where it lives. Watch this 22-minute beginner video that covers everything you need to know about GitHub \u2014 what it is, how it works, and how to clone, commit, push, and pull. No coding background needed. Watch it, take notes, and post one thing that surprised you in #ai-april.',
-   details:'Watch: GitHub Basics Made Easy by Skill Foundry (youtube.com/watch?v=Oaj3RBIoGFc). No tools needed \u2014 learn only.',
+   details:'Watch: <a href="https://www.youtube.com/watch?v=Oaj3RBIoGFc" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:var(--lime);font-weight:600;text-decoration:underline">GitHub Basics Made Easy by Skill Foundry</a>. No tools needed \u2014 learn only.',
    tools:[]},
   {day:15, week:4, dow:2, cat:0, emoji:'\ud83d\udcfa', diff:1, title:'Learn GitHub Pages',
    desc:'Now that you know GitHub, learn how to turn a repo into a live website. Watch both videos \u2014 they cover the same topic from two angles and together run about 20 minutes. Post one thing you learned and one question you still have in #ai-april.',
-   details:'Watch: How to Use GitHub Pages by The Common Coder (youtube.com/watch?v=5XhxR9Vs6zc) and Getting Started with GitHub Pages by Net Ninja (youtube.com/watch?v=QyFcl_Fba-k). No tools needed \u2014 learn only.',
+   details:'Watch: <a href="https://www.youtube.com/watch?v=5XhxR9Vs6zc" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:var(--lime);font-weight:600;text-decoration:underline">How to Use GitHub Pages by The Common Coder</a> and <a href="https://www.youtube.com/watch?v=QyFcl_Fba-k" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:var(--lime);font-weight:600;text-decoration:underline">Getting Started with GitHub Pages by Net Ninja</a>. No tools needed \u2014 learn only.',
    tools:[]},
   {day:16, week:4, dow:3, cat:0, emoji:'\ud83d\udc19', diff:2, title:'Set Up Your GitHub',
    desc:'Time to go hands-on. Create your GitHub account using your Equinix credentials, set up your first repository, and upload any file to it \u2014 an HTML page, a doc, anything. Your repo should be public. Post your GitHub profile link in #ai-april.',
