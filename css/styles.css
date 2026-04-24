@@ -871,6 +871,16 @@ nav button.active { color:var(--lime); background:rgba(184,255,53,.1); }
 .lane:last-child { border-bottom:none; }
 .lane:hover { background:var(--s2); }
 .lane.editing { background:rgba(184,255,53,.025); border-left:3px solid var(--lime); }
+.lane.marathon-winner {
+  background:linear-gradient(90deg,rgba(251,191,36,.06),rgba(245,158,11,.03));
+  border-left:3px solid #fbbf24;
+  border-bottom-color:rgba(251,191,36,.15);
+  box-shadow:0 0 20px rgba(251,191,36,.06);
+}
+.lane.marathon-winner .lane-avatar {
+  border-color:#fbbf24;
+  box-shadow:0 0 10px rgba(251,191,36,.3);
+}
 
 .lane-rank {
   width:36px; flex-shrink:0;

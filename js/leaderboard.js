@@ -149,16 +149,19 @@ function renderLB() {
       ? `<div class="lane-avatar"><img src="${photo}" alt="${p.name}"/></div>`
       : `<div class="lane-avatar">${initials}</div>`;
 
-    return `<div class="lane${laneCls}" id="lane-${p._orig}">
-      <div class="lane-rank">${rankLabel}</div>
+    const isMarathonWinner = p.comp >= 18;
+    const marathonCls = isMarathonWinner ? ' marathon-winner' : '';
+
+    return `<div class="lane${laneCls}${marathonCls}" id="lane-${p._orig}">
+      <div class="lane-rank">${isMarathonWinner ? '<span style="color:#fbbf24;text-shadow:0 0 12px rgba(251,191,36,.5)">👑</span>' : rankLabel}</div>
       ${avatarHtml}
       <div class="lane-name">
-        <div>${p.name}</div>
+        <div>${p.name} ${isMarathonWinner ? '<span style="display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#000;font-family:\'DM Mono\',monospace;font-size:8px;font-weight:800;letter-spacing:1.5px;padding:2px 8px;border-radius:100px;margin-left:6px;box-shadow:0 0 12px rgba(251,191,36,.4);vertical-align:middle">🏆 MARATHON WINNER</span>' : ''}</div>
         <div class="ln-sub">${p.comp}/18 · ${pct}%</div>
       </div>
       ${trackHtml}
       <div class="lane-score">
-        <div class="ls-pts">${score}</div>
+        <div class="ls-pts" ${isMarathonWinner ? 'style="color:#fbbf24;text-shadow:0 0 8px rgba(251,191,36,.4)"' : ''}>${score}</div>
         <div class="ls-sub">${p.comp} done · ${p.qual} qual</div>
       </div>
       <div class="lane-acts">
