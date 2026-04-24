@@ -42,7 +42,7 @@ let players = [
   {name:'Angel Mazzucco', comp:0, qual:0},
   {name:'Ashley Mims', comp:2, qual:0},
   {name:'Bev Kelly', comp:0, qual:0},
-  {name:'Calley Hood', comp:17, qual:0},
+  {name:'Calley Hood', comp:18, qual:0},
   {name:'Dalia Osorio', comp:1, qual:0},
   {name:'Eduardo Chalian', comp:0, qual:0},
   {name:'Elena Cazan', comp:4, qual:0},
