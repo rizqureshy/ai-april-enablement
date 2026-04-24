@@ -99,7 +99,7 @@ function renderLB() {
 
   el.innerHTML = sorted.map((p, rank) => {
     const score   = p.comp*5 + p.qual;
-    const pct     = Math.min(100, Math.round(p.comp/22*100));
+    const pct     = Math.min(100, Math.round(p.comp/18*100));
     const isEd    = editingId === p._orig;
     const rankCls = 'lrx';
     const laneCls = '';
@@ -127,7 +127,7 @@ function renderLB() {
         <div class="lane-name"><div>${p.name}</div></div>
         <div style="flex:1;display:flex;gap:8px;align-items:center;padding:0 4px">
           <label style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted)">DONE</label>
-          <input type="number" class="lb-inp-edit" id="edit-comp" value="${p.comp}" min="0" max="22" style="width:58px"/>
+          <input type="number" class="lb-inp-edit" id="edit-comp" value="${p.comp}" min="0" max="18" style="width:58px"/>
           ${isAdmin
             ? `<label style="font-family:'DM Mono',monospace;font-size:9px;color:var(--lime)">QUALITY 🔐</label>
                <input type="number" class="lb-inp-edit" id="edit-qual" value="${p.qual}" min="0" style="width:58px;border-color:rgba(184,255,53,.3)"/>`
@@ -154,7 +154,7 @@ function renderLB() {
       ${avatarHtml}
       <div class="lane-name">
         <div>${p.name}</div>
-        <div class="ln-sub">${p.comp}/22 · ${pct}%</div>
+        <div class="ln-sub">${p.comp}/18 · ${pct}%</div>
       </div>
       ${trackHtml}
       <div class="lane-score">
@@ -173,7 +173,7 @@ function startEdit(i){ editingId=i; renderLB(); setTimeout(()=>{ const inp=docum
 
 function saveEdit(i){
   const c=document.getElementById('edit-comp');
-  if(c) players[i].comp=Math.min(22,Math.max(0,parseInt(c.value)||0));
+  if(c) players[i].comp=Math.min(18,Math.max(0,parseInt(c.value)||0));
   if(isAdmin){
     const q=document.getElementById('edit-qual');
     if(q) players[i].qual=Math.max(0,parseInt(q.value)||0);
@@ -184,7 +184,7 @@ function saveEdit(i){
 
 function addPlayer(){
   const name=document.getElementById('inp-name').value.trim();
-  const comp=Math.min(22,Math.max(0,parseInt(document.getElementById('inp-comp').value)||0));
+  const comp=Math.min(18,Math.max(0,parseInt(document.getElementById('inp-comp').value)||0));
   const qual=isAdmin ? Math.max(0,parseInt(document.getElementById('inp-qual')?.value)||0) : 0;
   if(!name) return;
   if(players.find(p=>p.name.toLowerCase()===name.toLowerCase())){ alert('Racer already on the track!'); return; }

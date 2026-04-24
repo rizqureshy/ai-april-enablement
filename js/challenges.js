@@ -26,7 +26,7 @@ function tt(k){return`<span class="tt ${k}">${TL[k]}</span>`;}
 function diffs(n){return'<div class="diff">'+Array.from({length:5},(_,i)=>`<div class="dd${i<n?' on':''}"></div>`).join('')+'</div>';}
 
 function updateProgress(){
-  const n=done.size,tot=22,pct=Math.round(n/tot*100);
+  const n=done.size,tot=18,pct=Math.round(n/tot*100);
   document.getElementById('kpi-done').textContent=n;
   document.getElementById('prog-fill').style.width=pct+'%';
   document.getElementById('prog-label').textContent=`${n} / ${tot} completed`;
@@ -114,13 +114,38 @@ function renderWeekView(){
 
   weeks.forEach(w=>{
     const chs=CHS.filter(c=>c.week===w.num).sort((a,b)=>a.dow-b.dow);
+
+    // Week 5 \u2014 no challenges, show focus message instead
+    if(w.num===5){
+      html+=`<div class="week-section">
+        <div class="week-head">
+          <div class="week-num">W${w.num}</div>
+          <div class="week-meta">
+            <div class="week-title" style="color:${w.color}">${w.title}</div>
+            <div class="week-sub">${w.sub}</div>
+          </div>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(232,121,249,.06),rgba(184,255,53,.04));border:2px solid rgba(232,121,249,.2);border-radius:18px;padding:32px;text-align:center;">
+          <div style="font-size:36px;margin-bottom:12px">\ud83c\udfaf</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:var(--text);margin-bottom:12px">FINISH STRONG</div>
+          <div style="font-size:14px;color:var(--muted);line-height:1.8;max-width:600px;margin:0 auto;">
+            <strong style="color:var(--text)">\u2705 Complete remaining exercises</strong> \u2014 go back and finish any challenges you missed.<br>
+            <strong style="color:var(--text)">\ud83c\udf93 Focus on your AI Certification</strong> \u2014 study, complete modules, and submit proof.<br>
+            <strong style="color:var(--text)">\ud83c\udfc6 Focus on your Capstone Project</strong> \u2014 build, polish, and prepare your presentation.
+          </div>
+          <div style="margin-top:20px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--c8)">NO NEW CHALLENGES THIS WEEK</div>
+        </div>
+      </div>`;
+      return;
+    }
+
     const doneCount=chs.filter(c=>done.has(c.day)).length;
     const mandDone=chs.filter(c=>c.mandatory&&done.has(c.day)).length;
     const hasFri=chs.find(c=>c.dow===5);
 
-    // DOW header \u2014 W1=3 days (Wed/Thu/Fri), W5=4 days (Mon-Thu), others=5 (Mon-Fri)
-    const dowLabels  = w.num === 1 ? DOW_WEEK1 : w.num === 5 ? ['MON','TUE','WED','THU'] : DOW_FULL;
-    const gridCols   = w.num === 1 ? 3 : w.num === 5 ? 4 : 5;
+    // DOW header \u2014 W1=3 days (Wed/Thu/Fri), others=5 (Mon-Fri)
+    const dowLabels  = w.num === 1 ? DOW_WEEK1 : DOW_FULL;
+    const gridCols   = w.num === 1 ? 3 : 5;
     const dowHeaders = dowLabels.map((d,i) => {
       const isFri = (i === dowLabels.length - 1);
       return `<div class="dow-label${isFri?' fri':''}">${d}</div>`;

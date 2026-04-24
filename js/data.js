@@ -18,14 +18,14 @@ const WEEKS=[
   {num:2, title:'Week 2 \u2014 Apr 6\u201310',                 sub:'First full week \u2014 step it up, sharper prompts, bolder outputs.',       color:'var(--c0)'},
   {num:3, title:'Week 3 \u2014 Apr 13\u201317',                sub:'Mid-month \u2014 storytelling, data, and multi-tool challenges.',            color:'var(--c2)'},
   {num:4, title:'Week 4 \u2014 Apr 22\u201325',                sub:'Host it, show it, own it.',            color:'var(--c5)'},
-  {num:5, title:'Week 5 \u2014 Apr 27\u201330',  sub:'Final week \u2014 Mon to Thu only. The plan wraps on April 30th.', color:'var(--c8)'},
+  {num:5, title:'Week 5 \u2014 Apr 27\u201330',  sub:'No new challenges. Complete remaining exercises, finish your AI Certification, and focus on your Capstone Project.', color:'var(--c8)'},
 ];
 
 // W1 has 3 challenges (Wed/Thu/Fri), W2-W5 have 5 each (Mon-Fri)
 const DOW_FULL  = ['MON','TUE','WED','THU','FRI \ud83d\udd34'];
 const DOW_WEEK1 = ['WED','THU','FRI \ud83d\udd34'];
 
-// 22 challenges total: W1=3, W2-W4=5 each, W5=4
+// 18 challenges total: W1=3, W2-W4=5 each. W5 has no challenges.
 const CHS=[
   // WEEK 1: Apr 1 (Wed), Apr 2 (Thu), Apr 3 (Fri mandatory)
   {day:1,  week:1, dow:1, cat:0, emoji:'\ud83e\uddb8', diff:1, title:'AI Alter Ego',
@@ -107,38 +107,21 @@ const CHS=[
    details:'You have until Tuesday Apr 28th EOD to post your submission in #ai-april. Eamonn will grade and post results on Wednesday Apr 29th. The real skill: Turning a month of learning into a public artifact that speaks for itself.',
    tools:['gpt','cop','cla','gem'], mandatory:true},
 
-  // WEEK 5: Apr 27 (Mon) to Apr 30 (Thu) \u2014 plan ends April 30, no Friday
-  {day:19, week:5, dow:1, cat:0, emoji:'\ud83d\udccb', diff:2, title:'Meeting Recap Machine',
-   desc:'Paste your roughest, most chaotic meeting notes into ChatGPT or Copilot. Extract: a clean 5-line summary, 5 action items with owners, and a ready-to-send follow-up email \u2014 all from the same messy input.',
-   details:'Use real meeting notes (anonymise if needed). Share the before (messy) and after (clean summary + action items + email) side by side.',
-   tools:['gpt','cop']},
-  {day:20, week:5, dow:2, cat:7, emoji:'\ud83d\udd2e', diff:3, title:'Industry Fable',
-   desc:'Write a short fable set in your industry 5 years from now. Characters: the innovator, the skeptic, the manager, the intern. Illustrate 2 key scenes and each character with DALL\u00b7E.',
-   details:'Keep the fable under 500 words. Share the story text plus all generated illustrations together in your post.',
-   tools:['gpt']},
-  {day:21, week:5, dow:3, cat:3, emoji:'\ud83d\udce1', diff:4, title:'Live Ops Dashboard',
-   desc:'Ask Claude to build an animated operations dashboard \u2014 live-updating metrics, pulsing status indicators, filling progress bars. Must look like a real monitoring screen, not a static wireframe.',
-   details:'This should look like a real NOC or ops screen. Share a live link or screen recording showing the animations running.',
-   tools:['cla','gpt']},
-  {day:22, week:5, dow:4, cat:3, emoji:'\ud83c\udf10', diff:3, title:'Clickable Org Chart',
-   desc:'Describe your team structure to Claude. Ask it to build an animated org chart where clicking any person expands their role and responsibilities. Must be at least 3 levels deep.',
-   details:'Use your real team structure (or a fictional one). The click-to-expand interaction is key \u2014 share a live link or screen recording.',
-   tools:['cla']},
+  // WEEK 5: Apr 27 (Mon) to Apr 30 (Thu) \u2014 No new challenges
 ];
 
 /* CHALLENGE DATES
    W1: Apr 1(Wed), Apr 2(Thu), Apr 3(Fri-mand)   days 1\u20133
    W2: Apr 6(Mon)\u2013Apr 10(Fri-mand)               days 4\u20138
    W3: Apr 13(Mon)\u2013Apr 17(Fri-mand)              days 9\u201313
-   W4: Apr 22(Wed)\u2013Apr 25(Fri-mand)              days 14\u201318
-   W5: Apr 27(Mon)\u2013Apr 30(Thu) NO FRIDAY         days 19\u201322  */
+   W4: Apr 22(Tue)\u2013Apr 25(Fri-mand)              days 14\u201318
+   W5: No challenges                                        */
 const CHALLENGE_DATES = [
   null,
   new Date(2026,3,1),  new Date(2026,3,2),  new Date(2026,3,3),
   new Date(2026,3,6),  new Date(2026,3,7),  new Date(2026,3,8),  new Date(2026,3,9),  new Date(2026,3,10),
   new Date(2026,3,13), new Date(2026,3,14), new Date(2026,3,15), new Date(2026,3,16), new Date(2026,3,17),
   new Date(2026,3,22), new Date(2026,3,23), new Date(2026,3,24), new Date(2026,3,25), new Date(2026,3,26),
-  new Date(2026,3,27), new Date(2026,3,28), new Date(2026,3,29), new Date(2026,3,30),
 ];
 
 // \u2500\u2500 CAPSTONE PROJECT \u2500\u2500
